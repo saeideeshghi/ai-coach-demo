@@ -1,7 +1,7 @@
 .screen {
   position: relative;
   box-sizing: border-box;
-  min-block-size: calc(100cqi * 844 / 390);
+  min-block-size: 100%;
   display: flex;
   flex-direction: column;
   padding: 43px 16px 42px;

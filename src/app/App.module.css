@@ -5,7 +5,10 @@
   --raya-splash-glow: #ff9b65;
   --raya-splash-track: #5c5758;
 
-  min-block-size: 100svh;
+  block-size: 100vh;
+  block-size: 100dvh;
+  overflow: clip;
+  grid-template-rows: minmax(0, 1fr);
   display: grid;
   place-items: center;
   background: var(--raya-splash-surface);
@@ -13,6 +16,7 @@
 
 .stage {
   inline-size: 100%;
+  block-size: 100%;
 }
 
 .desktopNotice {
@@ -55,7 +59,7 @@
 .coachLoading {
   display: grid;
   place-items: center;
-  aspect-ratio: 390 / 844;
+  block-size: 100%;
   margin: 0;
   color: #f4eee7;
   font: 400 14px / 1.5 var(--raya-font-family);

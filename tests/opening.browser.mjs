@@ -31,6 +31,15 @@ try {
   await desktop.locator('[data-variant=opening]').waitFor({ state: 'hidden' })
   await desktop.close()
 
+  const shortMobile = await browser.newPage({ viewport: { width: 430, height: 740 }, reducedMotion: 'reduce' })
+  for (const path of ['/', '/onboarding?slide=2', '/welcome', '/signup', '/coach/session/demo']) {
+    await shortMobile.goto(origin + path)
+    const app = shortMobile.locator('main').first()
+    assert.equal((await app.boundingBox()).height, 740)
+    assert.equal(await shortMobile.evaluate(() => document.scrollingElement.scrollHeight), 740)
+  }
+  await shortMobile.close()
+
   for (const [width, height] of [[320, 693], [390, 844]]) {
     const page = await browser.newPage({ viewport: { width, height } })
     const now = new Date('2026-01-01T00:00:00Z')

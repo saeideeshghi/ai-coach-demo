@@ -1,6 +1,6 @@
 .room,
 .unavailable {
-  --room-height: max(540px, calc(100cqi * 844 / 390));
+  --room-height: 100%;
   position: relative;
   box-sizing: border-box;
   block-size: var(--room-height);

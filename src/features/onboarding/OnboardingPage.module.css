@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  min-block-size: calc(844 * var(--frame-unit));
+  min-block-size: 100%;
   padding: 0 clamp(20px, 8.205cqi, 32px) 48px;
   background: #070709;
   color: var(--ink);
@@ -50,7 +50,7 @@
 }
 
 .intro {
-  padding-block-start: calc(458 * var(--frame-unit));
+  padding-block-start: min(calc(458 * var(--frame-unit)), 54dvh);
 }
 
 .mark {

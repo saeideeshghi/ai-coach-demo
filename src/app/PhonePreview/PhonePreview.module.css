@@ -3,7 +3,9 @@
   position: relative;
   isolation: isolate;
   container-type: inline-size;
-  overflow: clip;
+  block-size: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
   background: #070709;
 }
 

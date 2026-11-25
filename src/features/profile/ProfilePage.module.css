@@ -7,7 +7,7 @@
 
   position: relative;
   box-sizing: border-box;
-  min-block-size: calc(844 * var(--frame-unit));
+  min-block-size: 100%;
   display: flex;
   flex-direction: column;
   padding: 60px var(--side) 41px;

@@ -1,6 +1,6 @@
 .screen, .unavailable {
   box-sizing: border-box;
-  min-block-size: calc(100cqi * 844 / 390);
+  min-block-size: 100%;
   background: radial-gradient(ellipse 250px 118.75px at calc(100% + 35px) 4.75px, #3d201b, var(--raya-program-surface));
   color: #f4eee7;
   font-family: var(--raya-font-family);

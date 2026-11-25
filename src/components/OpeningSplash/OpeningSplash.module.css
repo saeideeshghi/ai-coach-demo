@@ -4,7 +4,7 @@
   overflow: hidden;
   container-type: inline-size;
   inline-size: 100%;
-  aspect-ratio: 390 / 844;
+  block-size: 100%;
   background: var(--raya-splash-surface) url('./splash-background.svg') center /
     100% 100% no-repeat;
   color: var(--raya-splash-text);
