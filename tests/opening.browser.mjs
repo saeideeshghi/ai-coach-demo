@@ -40,6 +40,20 @@ try {
   }
   await shortMobile.close()
 
+  const embedded = await browser.newPage({ viewport: { width: 390, height: 740 }, reducedMotion: 'reduce' })
+  await embedded.addInitScript(() => {
+    Object.defineProperty(window.visualViewport, 'height', { configurable: true, value: 680 })
+  })
+  await embedded.goto(origin + '/home')
+  const embeddedApp = embedded.locator('main').first()
+  assert.equal((await embeddedApp.boundingBox()).height, 680)
+  await embedded.evaluate(() => {
+    Object.defineProperty(window.visualViewport, 'height', { value: 712 })
+    window.visualViewport.dispatchEvent(new Event('resize'))
+  })
+  assert.equal((await embeddedApp.boundingBox()).height, 712)
+  await embedded.close()
+
   const bottomControls = await browser.newPage({ viewport: { width: 390, height: 740 }, reducedMotion: 'reduce' })
   for (const [path, selector] of [
     ['/onboarding', '[data-onboarding-next]'],
@@ -165,8 +179,8 @@ try {
         assert.deepEqual(await button.boundingBox(), { x: 41, y, width: 308, height })
         assert.equal(await button.evaluate(el => getComputedStyle(el).fontSize), fontSize)
       }
-      await match('ورود به حساب', height - 14 - 49 - 14 - 51, 51, '14.8px')
-      await match('ثبت نام', height - 14 - 49, 49, '14.5px')
+      await match('ورود به حساب', 476, 51, '14.8px')
+      await match('ثبت نام', 541, 49, '14.5px')
     }
     await page.goBack()
     await verifyFrame(3)

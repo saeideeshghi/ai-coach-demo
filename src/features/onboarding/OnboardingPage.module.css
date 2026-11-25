@@ -50,7 +50,7 @@
 }
 
 .intro {
-  padding-block-start: min(calc(458 * var(--frame-unit)), calc((100dvh - var(--raya-bottom-safe-area) - env(safe-area-inset-top, 0px)) * 0.54));
+  padding-block-start: min(calc(458 * var(--frame-unit)), calc((var(--raya-app-height, 100dvh) - var(--raya-bottom-safe-area) - env(safe-area-inset-top, 0px)) * 0.54));
 }
 
 .mark {

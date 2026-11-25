@@ -7,6 +7,7 @@
 
   block-size: 100vh;
   block-size: 100dvh;
+  block-size: var(--raya-app-height, 100dvh);
   overflow: clip;
   box-sizing: border-box;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)

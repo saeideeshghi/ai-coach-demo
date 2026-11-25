@@ -30,10 +30,12 @@ import { demoAuth } from '../fixtures/auth'
 import { PhonePreview } from './PhonePreview/PhonePreview'
 import { actionAddress, appPathname, coachAddress, courseAddress, industryAddress, navigationOrigin, onboardingAddress, orderAddress, pathOf, paths, profileAddress, systemAddress, useAppNavigation } from './navigation'
 import styles from './App.module.css'
+import { useViewportHeight } from './useViewportHeight'
 
 const DemoCoachRoute = lazy(() => import('../features/coach/DemoCoachRoute'))
 
 export function App() {
+  const appRef = useViewportHeight()
   const { route, navigate, backTo } = useAppNavigation()
   const routeFade = useRef<ViewTransition | null>(null)
   const [, refreshProgram] = useReducer((revision: number) => revision + 1, 0)
@@ -176,7 +178,7 @@ export function App() {
   }
 
   return (
-    <main className={styles.app}>
+    <main className={styles.app} ref={appRef}>
       <section className={styles.desktopNotice} aria-labelledby="desktop-notice-title">
         <h2 id="desktop-notice-title">نسخهٔ دسکتاپ هنوز آماده نیست</h2>
         <p>برای مشاهدهٔ <bdi>Ai Coach</bdi>، این صفحه را روی موبایل باز کنید.</p>

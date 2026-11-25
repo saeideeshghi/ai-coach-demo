@@ -56,8 +56,7 @@
   inline-size: min(308px, 79%);
   display: grid;
   gap: 14px;
-  margin-block-start: auto;
-  padding-block-start: calc(52.5 * var(--frame-unit));
+  margin-block-start: calc(52.5 * var(--frame-unit));
 }
 
 .actions button {
