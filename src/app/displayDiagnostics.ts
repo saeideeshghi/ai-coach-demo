@@ -10,7 +10,7 @@ export function showDisplayDiagnostics() {
   output.style.cssText = 'font:inherit;margin:0;white-space:pre-wrap;overflow-wrap:anywhere'
   const close = document.createElement('button')
   close.textContent = 'بستن گزارش'
-  close.onclick = () => { panel.remove(); window.removeEventListener('resize', update) }
+  close.onclick = () => { panel.remove(); clearInterval(refresh); window.removeEventListener('resize', update) }
   panel.append(close, output)
   document.body.append(panel)
   function update() {
@@ -27,5 +27,5 @@ export function showDisplayDiagnostics() {
   }
   window.addEventListener('resize', update)
   void document.fonts.ready.then(() => requestAnimationFrame(update))
-  setTimeout(update, 1000)
+  const refresh = setInterval(update, 1000)
 }
