@@ -40,6 +40,28 @@ try {
   }
   await shortMobile.close()
 
+  for (const width of [320, 390]) {
+    const page = await browser.newPage({ viewport: { width, height: 740 }, reducedMotion: 'reduce' })
+    for (const [path, control] of [
+      ['/onboarding', '[data-onboarding-skip]'],
+      ['/signup', '[aria-label="بازگشت"]'],
+      ['/signin', '[aria-label="بازگشت"]'],
+      ['/profile/1', '[aria-label="بازگشت"]'],
+      ['/home', '[aria-label="منوی برنامه"]'],
+      ['/coach/session/demo', '[aria-label="بازگشت"]'],
+      ['/program/package', '[aria-label="بازگشت"]'],
+      ['/history', '[aria-label="تقویم جلسات"]'],
+      ['/courses/business-management', '[aria-label="بازگشت"]'],
+    ]) {
+      await page.goto(origin + path)
+      const button = page.locator(control).first()
+      await button.waitFor({ timeout: 5000 })
+      const { y } = await button.boundingBox()
+      assert.ok(y >= 12 && y <= 24, `${path} should have a compact top gap at width ${width}, got ${y}px`)
+    }
+    await page.close()
+  }
+
   for (const [width, height] of [[320, 693], [390, 844]]) {
     const page = await browser.newPage({ viewport: { width, height } })
     const now = new Date('2026-01-01T00:00:00Z')

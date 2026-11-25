@@ -31,21 +31,21 @@
 }
 .page :where(h1, h2, h3, p) { margin: 0; }
 .scroll { flex: 1; }
-.heading { position: relative; padding: 46px 32px 13px; text-align: center; }
+.heading { position: relative; padding: 28px 48px 13px; text-align: center; }
 .heading h1 { font-size: 24px; line-height: 37px; }
 .heading h1:focus { outline: none; }
 .heading p { color: #b4aaa3; font-size: 12px; }
-.page:is([data-view='report'], [data-view='account-edit']) .heading { padding-block-start: 62px; }
-.page:is([data-view='calendar'], [data-view='session']) .heading { padding-block-start: 56px; }
-.page[data-view='report'] .heading { padding-block-start: 71px; padding-block-end: 15px; }
+.page:is([data-view='report'], [data-view='account-edit']) .heading { padding-block-start: 44px; }
+.page:is([data-view='calendar'], [data-view='session']) .heading { padding-block-start: 38px; }
+.page[data-view='report'] .heading { padding-block-start: 53px; padding-block-end: 15px; }
 .page[data-view='report'] .footer { padding-block-end: 42px; }
-.page[data-view='calendar'] .heading { padding-block-start: 61px; padding-block-end: 16px; }
+.page[data-view='calendar'] .heading { padding-block-start: 43px; padding-block-end: 16px; }
 .page[data-view='calendar'] .heading h1 { font-size: 22px; }
 .page[data-view='calendar'] .heading p { margin-block-start: 3px; }
 .page[data-view='notifications'] .heading { padding: 72px 24px 13px; text-align: start; }
 .back, .calendarButton {
   position: absolute;
-  inset-block-start: 44px;
+  inset-block-start: var(--raya-top-control-gap);
   inset-inline-start: 12px;
   display: grid;
   place-items: center;
@@ -118,7 +118,6 @@
   .heading h1 { font-size: 20px; line-height: 34px; }
   .heading[data-history] { min-block-size: 172px; }
   .heading[data-history] h1 { font-size: 18px; }
-  .back, .calendarButton { inset-block-start: 29px; }
   .content { padding-inline: 12px; gap: 8px; }
   .footer { padding-inline: 12px; padding-block-end: 17px; }
 }

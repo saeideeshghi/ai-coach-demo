@@ -10,7 +10,7 @@
   min-block-size: 100%;
   display: flex;
   flex-direction: column;
-  padding: 60px var(--side) 41px;
+  padding: var(--raya-top-control-gap) var(--side) 41px;
   background: radial-gradient(ellipse 180px 110px at right top, #271a13, transparent), #0a0c0e;
   color: var(--ink);
   font-family: var(--raya-font-family);
@@ -284,7 +284,7 @@
   --sheet-scrim-duration: 280ms;
   --sheet-duration: 310ms;
   grid-template-rows: minmax(0, 1fr);
-  padding-block-start: 135px;
+  padding-block-start: 89px;
 }
 
 .picker {
@@ -406,7 +406,7 @@
 
 @container (max-width: 375px) {
   .screen {
-    padding-block-start: 48px;
+    padding-block-start: var(--raya-top-control-gap);
     padding-block-end: 28px;
   }
 
@@ -444,7 +444,7 @@
     min-block-size: 60px;
   }
 
-  .pickerOverlay { padding-block-start: 111px; }
+  .pickerOverlay { padding-block-start: 77px; }
 
   .picker {
     padding-block-start: 46px;

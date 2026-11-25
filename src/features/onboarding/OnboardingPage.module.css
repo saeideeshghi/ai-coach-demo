@@ -42,7 +42,7 @@
 
 .skip {
   position: absolute;
-  inset-block-start: calc(58 * var(--frame-unit));
+  inset-block-start: var(--raya-top-control-gap);
   inset-inline-end: clamp(20px, 8.205cqi, 32px);
   color: rgb(244 238 231 / 76%);
   font-size: 12px;

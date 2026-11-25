@@ -10,7 +10,7 @@
   position: relative;
   box-sizing: border-box;
   min-block-size: 100%;
-  padding: calc(145 * var(--frame-unit)) clamp(16px, 5.54cqi, 25px) 36px;
+  padding: calc(112 * var(--frame-unit)) clamp(16px, 5.54cqi, 25px) 36px;
   background: #0e0f0f;
   color: #f2f2f2;
   font-family: var(--raya-font-family);
@@ -18,7 +18,7 @@
 
 .back {
   position: absolute;
-  inset-block-start: calc(61 * var(--frame-unit));
+  inset-block-start: var(--raya-top-control-gap);
   inset-inline-start: clamp(9px, 2.56cqi, 14px);
   display: grid;
   place-items: center;
@@ -194,7 +194,6 @@
 
 @container (max-width: 355px) {
   .screen { --raya-field-font: 14px; padding-block: 94px 22px; }
-  .back { inset-block-start: 42px; }
   .header h1 { line-height: 38px; }
   .header p { font-size: 14px; line-height: 24px; }
   .form { margin-block-start: 15px; }

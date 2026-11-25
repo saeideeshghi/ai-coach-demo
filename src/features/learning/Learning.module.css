@@ -47,7 +47,7 @@
 .back {
   position: absolute;
   z-index: 2;
-  inset: 46px 12px auto auto;
+  inset: var(--raya-top-control-gap) 12px auto auto;
   display: grid;
   place-items: center;
   inline-size: 44px;
@@ -133,7 +133,6 @@
 .courseCard svg { color: #b4aaa3; }
 
 .lessonHero { position: relative; block-size: 267px; background: #131215; }
-.lessonHero > .back { inset-block-start: 36px; }
 .videoTitle {
   position: absolute;
   z-index: 1;
@@ -141,8 +140,8 @@
   display: grid;
   align-items: end;
   box-sizing: border-box;
-  min-block-size: 77px;
-  padding: 40px 63px 9px 16px;
+  min-block-size: 60px;
+  padding: calc(var(--raya-top-control-gap) + 8px) 63px 9px 16px;
   background: #110d0b57;
   font-size: 14px;
   line-height: 21px;
@@ -219,7 +218,6 @@
   .courseHero { block-size: 173px; padding-inline-start: 30px; }
   .courseHero img, .courseHero::after { block-size: 258px; }
   .courseHero h1 { font-size: 21px; line-height: 31px; }
-  .back { inset-block-start: 39px; }
   .featured { margin-inline: 12px; padding: 9px; gap: 5px; }
   .badge { margin-block-end: 8px; }
   .featureCopy h2, .cardCopy { font-size: 12px; }
@@ -227,8 +225,8 @@
   .courseCard { gap: 8px; }
   .courseCard img { block-size: 75px; }
   .lessonHero { block-size: 213px; }
-  .videoTitle { min-block-size: 63px; padding: 34px 52px 7px 14px; font-size: 12px; line-height: 18px; }
-  .lessonHero > .back { inset-block-start: 27px; inset-inline-start: 5px; }
+  .videoTitle { min-block-size: 54px; padding: calc(var(--raya-top-control-gap) + 8px) 52px 7px 14px; font-size: 12px; line-height: 18px; }
+  .lessonHero > .back { inset-inline-start: 5px; }
   .courseRoadmap { padding-inline: 20px; }
   .courseRoadmap h2 { font-size: 14px; }
   .courseRoadmap ol { margin-block-start: 7px; }

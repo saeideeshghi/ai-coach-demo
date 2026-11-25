@@ -14,7 +14,7 @@
   min-block-size: 100%;
   display: flex;
   flex-direction: column;
-  padding: calc(175 * var(--frame-unit)) clamp(16px, 5.54cqi, 25px) 40px;
+  padding: calc(142 * var(--frame-unit)) clamp(16px, 5.54cqi, 25px) 40px;
   background: #0e0f0f;
   color: var(--ink);
   font-family: var(--raya-font-family);
@@ -24,18 +24,18 @@
 .screen[data-mode='reset'] {
   --raya-field-height: 50px;
   --raya-field-font: 15px;
-  padding-block-start: calc(162 * var(--frame-unit));
+  padding-block-start: calc(129 * var(--frame-unit));
   background: #0b0c10;
 }
 
 .screen[data-mode='reset'] {
   --raya-field-font: 14px;
-  padding: calc(194 * var(--frame-unit)) clamp(18px, 7.18cqi, 30px) 40px;
+  padding: calc(161 * var(--frame-unit)) clamp(18px, 7.18cqi, 30px) 40px;
 }
 
 .back {
   position: absolute;
-  inset-block-start: calc(61 * var(--frame-unit));
+  inset-block-start: var(--raya-top-control-gap);
   inset-inline-start: 10px;
   display: grid;
   place-items: center;
@@ -395,16 +395,16 @@
 
 @container (max-width: 355px) {
   .screen {
-    padding-block-start: 130px;
+    padding-block-start: 106px;
     padding-block-end: 28px;
   }
 
   .screen[data-mode='recovery'] {
-    padding-block-start: 122px;
+    padding-block-start: 98px;
   }
 
   .screen[data-mode='reset'] {
-    padding-block-start: 142px;
+    padding-block-start: 118px;
   }
 
   .sheet {

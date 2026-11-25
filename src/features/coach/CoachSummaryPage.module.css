@@ -9,7 +9,7 @@
 .screen {
   display: flex;
   flex-direction: column;
-  padding: 72px 0 var(--raya-program-nav-clearance);
+  padding: 36px 0 var(--raya-program-nav-clearance);
   background: linear-gradient(to bottom, transparent, #060809bf 55%, #060809) bottom / 100% 111px no-repeat,
     radial-gradient(ellipse 250px 118.75px at calc(100% + 35px) 4.75px, #3d201b, var(--raya-program-surface));
 }
@@ -132,7 +132,7 @@
 .screen nav { margin-block-start: 0; }
 
 @container (max-width: 355px) {
-  .screen { padding: 48px 0 var(--raya-program-nav-clearance); }
+  .screen { padding: 26px 0 var(--raya-program-nav-clearance); }
   .header h1 { line-height: 32px; }
   .cards { margin: 19px 18px 0; gap: 8px; }
   .identity { min-block-size: 58px; }

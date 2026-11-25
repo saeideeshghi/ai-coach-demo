@@ -23,7 +23,7 @@ export async function verifyActions(browser, origin) {
       const homeNav = await nav.boundingBox()
       if (width === 390) {
         const cta = page.getByRole('button', { name: 'ادامهٔ اقدام' })
-        assert.deepEqual(await cta.boundingBox(), { x: 175, y: 235, width: 180, height: 44 })
+        assert.deepEqual(await cta.boundingBox(), { x: 175, y: 190, width: 180, height: 44 })
         assert.equal(await cta.evaluate(button => getComputedStyle(button).borderColor), 'rgb(105, 64, 49)')
       }
       await nav.getByRole('button', { name: 'کوچینگ' }).click()

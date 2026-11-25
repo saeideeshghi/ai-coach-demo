@@ -24,7 +24,7 @@
   pointer-events: none;
 }
 
-.hero { position: relative; padding: 59px 40px 0 16px; }
+.hero { position: relative; padding: var(--raya-top-control-gap) 40px 0 16px; }
 .tools {
   display: flex;
   align-items: center;
@@ -35,7 +35,7 @@
 .profile { display: flex; flex-direction: row-reverse; gap: 16px; align-items: center; }
 .tools button { display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
 .avatarButton img { border-radius: 50%; transform: scaleX(-1); }
-.menu { position: absolute; z-index: 2; inset: 100px 15px auto auto; display: grid; inline-size: min(212px, 85%); padding: 6px; border: 1px solid #ffffff24; border-radius: 14px; background: #161719; box-shadow: 0 10px 24px #000b; }
+.menu { position: absolute; z-index: 2; inset: calc(var(--raya-top-control-gap) + 41px) 15px auto auto; display: grid; inline-size: min(212px, 85%); padding: 6px; border: 1px solid #ffffff24; border-radius: 14px; background: #161719; box-shadow: 0 10px 24px #000b; }
 .menu button { display: flex; justify-content: space-between; align-items: center; gap: 6px; min-block-size: 39px; padding-inline: 8px; border: 0; background: none; color: inherit; font: 600 12px var(--raya-font-family); cursor: pointer; }
 .menu button + button { border-block-start: 1px solid #ffffff1a; }
 
@@ -190,7 +190,6 @@
 .preparingCards strong { display: block; margin: 19px 11px 0; font-size: 16px; }
 .preparingCards p { margin: 6px 11px 0; color: #b4aaa3; font: 400 12.6px / 20px var(--raya-font-family); }
 @container (max-width: 355px) {
-  .screen[data-preparing] .hero { padding-block-start: 51px; }
   .preparingCards section + section { min-block-size: 70px; }
   .preparingCards { gap: 10px; margin-block: 9px; }
   .preparingCards section:first-child { min-block-size: 100px; }
@@ -257,7 +256,6 @@
 .activeCards li:nth-child(4) span { color: #b4aaa3; background: #222327; }
 
 @container (max-width: 355px) {
-  .screen[data-active] .hero { padding-block-start: 41px; }
   .screen[data-active] .roadmap { margin-block-start: 16px; }
   .screen[data-active] .hero h1 { margin-block-start: 16px; line-height: 32px; }
   .activeCards { gap: 8px; margin: 8px 12px 8px; }

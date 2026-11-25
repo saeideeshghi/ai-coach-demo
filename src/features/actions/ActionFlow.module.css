@@ -94,9 +94,9 @@
 .inactive h2 { font-size: 19px; }
 .inactive p { margin-block-start: 10px; line-height: 22px; }
 
-.pageHeader { position: relative; box-sizing: border-box; min-block-size: 142px; padding: 70px 24px 10px; }
+.pageHeader { position: relative; box-sizing: border-box; min-block-size: 142px; padding: 51px 24px 10px; }
 .pageHeader p { font-size: 11px; line-height: 20px; }
-.back { position: absolute; inset: 42px 12px auto auto; display: grid; place-items: center; inline-size: 42px; block-size: 30px; border: 0; background: none; color: #f4eee7; }
+.back { position: absolute; inset: var(--raya-top-control-gap) 12px auto auto; display: grid; place-items: center; inline-size: 42px; block-size: 30px; border: 0; background: none; color: #f4eee7; }
 .back svg { inline-size: 16px; block-size: 16px; }
 .detailCards { gap: 0; }
 
@@ -156,7 +156,7 @@
 }
 
 .chatScreen { padding-block-end: 16px; }
-.chatScreen .pageHeader { min-block-size: 103px; padding-block-start: 58px; text-align: center; }
+.chatScreen .pageHeader { min-block-size: 103px; padding-block-start: 44px; text-align: center; }
 .chatScreen .pageHeader h1 { font-size: 22px; }
 .chatScreen .identity { margin-inline: 16px; flex: none; }
 .messages { flex: 1; }
@@ -200,7 +200,6 @@
   .actionList header { min-block-size: 32px; }
   .actionList li > :is(div, button) { min-block-size: 31px; }
   .pageHeader { min-block-size: 106px; padding-block-start: 55px; }
-  .back { inset-block-start: 26px; }
   .identity h2 { margin-block-start: 4px; padding-block-start: 4px; }
   .reason, .steps, .output { min-block-size: 0; margin-block-start: 8px; padding-block: 7px; }
   .steps li { min-block-size: 23px; }
