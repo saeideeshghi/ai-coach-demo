@@ -177,8 +177,12 @@ export function App() {
 
   return (
     <main className={styles.app}>
+      <section className={styles.desktopNotice} aria-labelledby="desktop-notice-title">
+        <h2 id="desktop-notice-title">نسخهٔ دسکتاپ هنوز آماده نیست</h2>
+        <p>برای مشاهدهٔ <bdi>Ai Coach</bdi>، این صفحه را روی موبایل باز کنید.</p>
+      </section>
       <div className={styles.stage}>
-        <PhonePreview variant={variant} statusInFront={route.page === 'access' && route.view === 'changed'}>
+        <PhonePreview variant={variant}>
           {route.page === 'opening' && (
             <OpeningSplash onComplete={() => navigate(paths.onboarding, 'replace')} />
           )}

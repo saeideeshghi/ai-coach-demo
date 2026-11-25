@@ -51,7 +51,7 @@ export async function verifyProgram(browser, origin) {
     await heading('سیستم جاری').waitFor()
     await page.close()
   }
-  const page = await browser.newPage()
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
   await page.goto(origin + '/program/package?demo=unknown')
   await page.getByRole('button', { name: 'ادامه و پرداخت' }).click()
   await page.getByRole('button', { name: 'پرداخت آزمایشی' }).click()

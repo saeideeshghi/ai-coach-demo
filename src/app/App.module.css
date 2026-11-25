@@ -12,15 +12,36 @@
 }
 
 .stage {
-  inline-size: min(100%, 390px);
+  inline-size: 100%;
+}
+
+.desktopNotice {
+  display: none;
+  padding: 24px;
+  color: var(--raya-splash-text);
+  font-family: var(--raya-font-family);
+  text-align: center;
+}
+
+.desktopNotice h2 {
+  margin: 0 0 8px;
+  font-size: 24px;
+}
+
+.desktopNotice p {
+  margin: 0;
+  color: #c8c0bd;
 }
 
 @media (min-width: 600px) {
   .stage {
-    max-inline-size: calc((100svh - 48px) * 390 / 844);
+    display: none;
+  }
+
+  .desktopNotice {
+    display: block;
   }
 }
-
 
 @media (display-mode: standalone) {
   .app {
@@ -29,10 +50,6 @@
       env(safe-area-inset-bottom) env(safe-area-inset-left);
   }
 
-  .stage {
-    inline-size: min(100%, 480px);
-    max-inline-size: none;
-  }
 }
 
 .coachLoading {

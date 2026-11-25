@@ -25,17 +25,23 @@ try {
       : { channel: 'msedge' }),
   })
 
-  for (const [width, height] of [[320, 693], [390, 844], [1440, 900]]) {
+  const desktop = await browser.newPage({ viewport: { width: 1440, height: 900 } })
+  await desktop.goto(origin)
+  await desktop.getByRole('heading', { name: 'نسخهٔ دسکتاپ هنوز آماده نیست' }).waitFor()
+  await desktop.locator('[data-variant=opening]').waitFor({ state: 'hidden' })
+  await desktop.close()
+
+  for (const [width, height] of [[320, 693], [390, 844]]) {
     const page = await browser.newPage({ viewport: { width, height } })
     const now = new Date('2026-01-01T00:00:00Z')
     await page.clock.install({ time: now })
     await page.clock.pauseAt(new Date(now.getTime() + 100))
     await page.goto(origin)
-    const splash = page.getByRole('region', { name: 'شروع رایا' })
+    const splash = page.getByRole('region', { name: 'شروع Ai Coach' })
     await splash.waitFor()
     const openingFrame = page.locator('[data-variant=opening]')
-    await openingFrame.locator('img').last().evaluate(img => img.decode())
-    assert.ok(await openingFrame.locator('img').last().isVisible())
+    assert.equal(await openingFrame.evaluate(frame => getComputedStyle(frame).borderRadius), '0px')
+    assert.equal(await openingFrame.locator(':scope > img').count(), 0)
     await splash.locator('img').evaluateAll((images) =>
       Promise.all(images.map((image) => image.decode())),
     )
@@ -50,11 +56,12 @@ try {
     const fonts = await page.evaluate(async () => {
       await document.fonts.ready
       return [...document.querySelectorAll('h1, [data-onboarding-copy], [data-onboarding-skip], [data-onboarding-next]')]
+        .filter((el) => el.getClientRects().length > 0)
         .map((el) => getComputedStyle(el).fontSize)
     })
     assert.deepEqual(fonts, ['12px', '24px', '13px', '16px'])
     async function verifyFrame(step) {
-      const frame = page.getByRole('region', { name: 'معرفی رایا' })
+      const frame = page.getByRole('region', { name: 'معرفی Ai Coach' })
       assert.equal(await frame.getAttribute('data-slide'), String(step))
       assert.equal(await frame.locator('[aria-current=step]').getAttribute('aria-label'),
         `اسلاید ${step.toLocaleString('fa-IR')}`)
@@ -124,7 +131,7 @@ try {
     console.log(`Opening, onboarding, and welcome verified at ${width}×${height}`)
   }
 
-  const direct = await browser.newPage()
+  const direct = await browser.newPage({ viewport: { width: 390, height: 844 } })
   await direct.goto(origin + '/onboarding')
   await direct.getByRole('heading', { name: 'همراه هوشمند شما در مسیر رشد' }).waitFor()
   await direct.goto(origin + '/welcome')
@@ -228,9 +235,9 @@ try {
   await verifyLearning(browser, origin)
   await verifyRecords(browser, origin)
 
-  const page = await browser.newPage({ reducedMotion: 'reduce' })
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' })
   await page.goto(origin)
-  const splash = page.getByRole('region', { name: 'شروع رایا' })
+  const splash = page.getByRole('region', { name: 'شروع Ai Coach' })
   await splash.waitFor()
   assert.equal(await splash.evaluate((element) => element.getAnimations({ subtree: true }).length), 0)
   console.log('Reduced-motion opening verified')

@@ -148,7 +148,7 @@ export async function verifyCoach(browser, origin) {
     console.log(`Coach demo and summary verified at ${width}×${height}`)
   }
 
-  const reduced = await browser.newPage({ reducedMotion: 'reduce' })
+  const reduced = await browser.newPage({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' })
   await reduced.goto(origin + '/coach/session/demo')
   await reduced.getByRole('button', { name: 'شروع مکالمه' }).click()
   const wave = reduced.locator('svg[data-moving="true"]')
@@ -156,7 +156,7 @@ export async function verifyCoach(browser, origin) {
   assert.equal(await wave.locator('path').first().evaluate(el => getComputedStyle(el).animationName), 'none')
   await reduced.close()
 
-  const page = await browser.newPage()
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } })
   await page.route('**/*.mp4', route => route.abort())
   await page.goto(origin + '/coach/session/demo')
   await page.getByRole('button', { name: 'شروع مکالمه' }).click()

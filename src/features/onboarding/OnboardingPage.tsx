@@ -55,7 +55,7 @@ export function OnboardingPage({ step, onSelect, onFinish }: {
   }, [step])
 
   return (
-    <section className={styles.screen} aria-label="معرفی رایا" data-slide={step}>
+    <section className={styles.screen} aria-label="معرفی Ai Coach" data-slide={step}>
       <img className={styles.hero} src={slide.hero} alt="" />
 
       <button className={styles.skip} data-onboarding-skip type="button" onClick={onFinish}>

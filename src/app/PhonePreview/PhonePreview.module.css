@@ -4,64 +4,9 @@
   isolation: isolate;
   container-type: inline-size;
   overflow: clip;
-  border-radius: 8.205% / 3.791%;
   background: #070709;
 }
 
-.frame::after {
-  content: '';
-  position: absolute;
-  z-index: 1;
-  inset: 0;
-  border: 1px solid var(--frame-rim, rgb(255 255 255 / 13%));
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.frame:is([data-variant='summary'], [data-variant='package'], [data-variant='followup']) { --frame-rim: var(--raya-reference-frame-border); }
-
-.status {
-  position: absolute;
-  z-index: 1;
-  inset: 0 0 auto;
-  inline-size: 100%;
-  block-size: auto;
-  pointer-events: none;
-}
-
-.status[data-in-front] { z-index: 4; }
-
 @container (max-width: 355px) {
   .frame > * { --raya-program-nav-clearance: 18px; }
-}
-
-@media (min-width: 600px) {
-  .frame {
-  --raya-program-nav-clearance: 32px;
-    box-shadow: 0 0 0 1px #343130, 0 0 0 6px #191818, 0 18px 48px #000b;
-  }
-}
-
-.frame[data-variant='welcome']::after {
-  border: 0;
-}
-
-.frame[data-variant='opening']::after,
-.frame[data-variant='account']::after,
-.frame[data-variant='recovery']::after,
-.frame[data-variant='profile']::after {
-  border: 0;
-}
-
-@media (display-mode: standalone) {
-  .frame {
-  --raya-program-nav-clearance: 32px;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .status,
-  .frame::after {
-    display: none;
-  }
 }

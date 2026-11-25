@@ -20,7 +20,7 @@ const details: ReportDetails = {
 type System = { id: string; title: string; completed: boolean }
 
 function download(systems: readonly System[]) {
-  const contents = ['گزارش نهایی آزمایشی رایا', '', 'وضعیت هفت سیستم',
+  const contents = ['گزارش نهایی آزمایشی Ai Coach', '', 'وضعیت هفت سیستم',
     ...systems.map(system => system.title + ' — تکمیل شد'), '', 'جمع‌بندی مدیریتی', summary,
     '', 'میزان تحقق اهداف', ...details.goals.map(goal => goal.title + ' — ' + goal.percent.toLocaleString('fa-IR') + '٪'),
     '', 'اثر بر عملکرد مدیریتی', details.impact, '', 'شکاف‌های باقی‌مانده', details.gaps,
@@ -28,7 +28,7 @@ function download(systems: readonly System[]) {
   const url = URL.createObjectURL(new Blob(['\uFEFF', contents.join('\r\n')], { type: 'text/plain;charset=utf-8' }))
   const link = document.createElement('a')
   link.href = url
-  link.download = 'گزارش-نمونه-رایا.txt'
+  link.download = 'گزارش-نمونه-Ai Coach.txt'
   link.click()
   window.setTimeout(() => URL.revokeObjectURL(url), 1000)
 }

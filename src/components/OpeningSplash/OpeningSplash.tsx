@@ -33,7 +33,7 @@ export function OpeningSplash({ onComplete }: OpeningSplashProps) {
   return (
     <section
       className={styles.splash}
-      aria-label="شروع رایا"
+      aria-label="شروع Ai Coach"
       style={{ '--opening-duration': `${cycleMs}ms` } as React.CSSProperties}
     >
       {/* Brand assembly, title, and tagline */}
