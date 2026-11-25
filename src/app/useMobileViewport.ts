@@ -1,5 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
 
+// Upper bound of the approved unscaled mobile composition. Some Android
+// browsers expose a wider CSS viewport for the same physical screen.
+const mobileCompositionWidth = 412
+
 export function useMobileViewport() {
   const appRef = useRef<HTMLElement>(null)
 
@@ -14,6 +18,7 @@ export function useMobileViewport() {
       if (height <= 0) return
       app.style.setProperty('--raya-app-height', height + 'px')
       app.style.setProperty('--raya-app-offset-top', (viewport?.offsetTop ?? 0) + 'px')
+      app.style.setProperty('--raya-mobile-density', String(Math.max(1, app.clientWidth / mobileCompositionWidth)))
     }
 
     syncViewport()

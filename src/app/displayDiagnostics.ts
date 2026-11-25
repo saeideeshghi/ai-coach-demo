@@ -15,12 +15,14 @@ export function showDisplayDiagnostics() {
   document.body.append(panel)
   function update() {
     const heading = document.querySelector('main h1')
+    const surface = document.querySelector<HTMLElement>('[data-variant]')
     output.textContent = JSON.stringify({
       viewport: { width: innerWidth, height: innerHeight },
       screen: { width: screen.width, height: screen.height, dpr: devicePixelRatio },
       visualViewport: window.visualViewport && { width: visualViewport!.width, height: visualViewport!.height, scale: visualViewport!.scale },
       heading: heading && { text: heading.textContent, font: getComputedStyle(heading).font, width: heading.getBoundingClientRect().width },
       fontLoaded: document.fonts.check('16px Kahroba'),
+      composition: surface && { width: surface.clientWidth, height: surface.clientHeight, density: getComputedStyle(surface).zoom },
       bundle: document.querySelector<HTMLScriptElement>('script[type="module"]')?.src.split('/').pop(),
       browser: navigator.userAgent,
     }, null, 2)

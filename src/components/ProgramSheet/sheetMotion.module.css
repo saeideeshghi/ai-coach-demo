@@ -19,7 +19,7 @@
   position: sticky;
   inset-block-end: 0;
   min-block-size: 0;
-  max-block-size: min(100%, 100dvh);
+  max-block-size: min(100%, var(--raya-surface-height, 100dvh));
   overflow: auto;
   overscroll-behavior: contain;
   align-content: start;

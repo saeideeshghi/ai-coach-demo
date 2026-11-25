@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  min-block-size: min(623px, 100%, 100dvh);
+  min-block-size: min(623px, 100%, var(--raya-surface-height, 100dvh));
   padding: 24px 16px 35px;
   border: 1px solid #ffffff25;
   border-radius: 26px 26px 0 0;
@@ -245,7 +245,7 @@
 }
 
 @container (max-width: 355px) {
-  .sheet { min-block-size: min(588px, 100%, 100dvh); padding-block-end: 18px; }
+  .sheet { min-block-size: min(588px, 100%, var(--raya-surface-height, 100dvh)); padding-block-end: 18px; }
   .handle { margin-block-end: 17px; }
   .voices label, .speeds label { font-size: 12px; }
   .toggle { min-block-size: 47px; font-size: 13px; }

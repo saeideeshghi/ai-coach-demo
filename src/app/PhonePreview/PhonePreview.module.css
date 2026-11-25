@@ -1,4 +1,9 @@
 .frame {
+  --raya-layout-density: 1;
+  --raya-surface-height: calc(var(--raya-app-height, 100dvh) / var(--raya-layout-density));
+  --raya-surface-bottom-inset: calc(var(--raya-bottom-safe-area) / var(--raya-layout-density));
+  --raya-surface-top-inset: calc(env(safe-area-inset-top, 0px) / var(--raya-layout-density));
+  --raya-bottom-control-gap: calc(14px + var(--raya-surface-bottom-inset));
   --raya-program-nav-clearance: var(--raya-bottom-control-gap);
   position: relative;
   isolation: isolate;
@@ -8,4 +13,16 @@
   overflow: auto;
   overscroll-behavior: contain;
   background: #070709;
+}
+
+/* Layout zoom keeps the entire mobile composition at one density, including
+   fixed-pixel controls. Unlike a transform, it also sizes the scroll viewport.
+   The app shell and future desktop presentation retain native CSS coordinates. */
+@media not all and (min-width: 600px) {
+  @supports (zoom: 1) {
+    .frame {
+      --raya-layout-density: var(--raya-mobile-density, 1);
+      zoom: var(--raya-layout-density);
+    }
+  }
 }

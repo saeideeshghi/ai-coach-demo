@@ -43,7 +43,7 @@ export function ScrollArea({ className, viewportClassName, contentClassName, ref
     const marker = thumb.current
     if (!port || !marker || grab.current === null) return
     const bounds = event.currentTarget.getBoundingClientRect()
-    const travel = bounds.height - marker.offsetHeight
+    const travel = bounds.height - marker.getBoundingClientRect().height
     const ratio = travel > 0 ? (event.clientY - bounds.top - grab.current) / travel : 0
     port.scrollTop = Math.max(0, Math.min(1, ratio)) * (port.scrollHeight - port.clientHeight)
   }
@@ -67,7 +67,8 @@ export function ScrollArea({ className, viewportClassName, contentClassName, ref
         const marker = thumb.current
         if (!marker || event.button !== 0) return
         event.preventDefault()
-        grab.current = event.target === marker ? event.clientY - marker.getBoundingClientRect().top : marker.offsetHeight / 2
+        const markerBounds = marker.getBoundingClientRect()
+        grab.current = event.target === marker ? event.clientY - markerBounds.top : markerBounds.height / 2
         event.currentTarget.setPointerCapture(event.pointerId)
         seek(event)
       }}

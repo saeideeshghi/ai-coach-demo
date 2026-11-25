@@ -43,11 +43,12 @@
 }
 
 @media (min-width: 600px) {
-  .stage {
+  /* Fullscreen media may resize the viewport beyond the mobile breakpoint. */
+  .app:not(:has(:fullscreen)) .stage {
     display: none;
   }
 
-  .desktopNotice {
+  .app:not(:has(:fullscreen)) .desktopNotice {
     display: block;
   }
 }
