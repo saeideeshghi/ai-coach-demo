@@ -9,10 +9,16 @@
   --raya-account-action-shadow: 0 7px 17px rgb(255 104 24 / 18%);
   --raya-top-control-gap: 14px;
   --raya-bottom-control-gap: calc(14px + var(--raya-bottom-safe-area));
-  --raya-bottom-safe-area: env(safe-area-inset-bottom, 0px);
+  --raya-bottom-safe-area: 0px;
   --raya-font-family: Kahroba, sans-serif;
   color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   background: #111;
+}
+
+@media (display-mode: standalone), (display-mode: fullscreen) {
+  :root { --raya-bottom-safe-area: env(safe-area-inset-bottom, 0px); }
 }
 
 body {

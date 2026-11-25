@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import { ProgramChevron } from '../../components/ProgramChevron'
 import type { Course, CourseStatus, LearningProgress } from './learning'
 import { courseProgress, number } from './learning'
-import { LessonPlayer } from './LessonPlayer'
+import { LessonPlayer, PlaybackIcon } from './LessonPlayer'
 import styles from './Learning.module.css'
 
 const filters = [
@@ -147,6 +147,8 @@ export function LessonPage({ course, lessonId, progress, canWatch, nav, onBack, 
   const [initial] = useState(() => progress.read(course.id, lessonId))
   const [completed, setCompleted] = useState(initial.completed)
   const sample = canWatch ? course.sample : undefined
+  const player = useRef<{ toggle: () => void }>(null)
+  const [playing, setPlaying] = useState(false)
 
   return <section className={styles.screen} aria-label="درس">
     <ScrollArea className={styles.scroll}>
@@ -154,7 +156,7 @@ export function LessonPage({ course, lessonId, progress, canWatch, nav, onBack, 
         <Back onClick={onBack} />
         {sample ? <>
           <h1 className={styles.videoTitle} ref={title} tabIndex={-1}>{lesson.title}</h1>
-          <LessonPlayer sample={sample} initial={initial} onProgress={(seconds, ended) => {
+          <LessonPlayer ref={player} sample={sample} initial={initial} playing={playing} onPlayingChange={setPlaying} onProgress={(seconds, ended) => {
             const done = completed || ended
             progress.save(course.id, lessonId, { seconds, completed: done })
             if (ended) setCompleted(true)
@@ -176,10 +178,11 @@ export function LessonPage({ course, lessonId, progress, canWatch, nav, onBack, 
             const current = item.id === lessonId
             const done = progress.read(course.id, item.id).completed
             return <li key={item.id}>
-              <button type="button" aria-current={current ? 'page' : undefined} onClick={() => onLesson(item.id)}>
+              <button type="button" aria-current={current ? 'page' : undefined} aria-pressed={current && sample ? playing : undefined}
+                onClick={() => { if (current && sample) player.current?.toggle(); else if (!current) onLesson(item.id) }}>
                 <span>{number(position + 1)}</span><strong>{item.title}</strong>
                 <span className={styles.lessonIndicator} data-done={done || undefined} aria-hidden="true">
-                  {current ? '▶' : done ? '✓' : <ProgramChevron />}
+                  {current && sample ? <PlaybackIcon playing={playing} /> : done ? '✓' : <ProgramChevron />}
                 </span>
               </button>
             </li>

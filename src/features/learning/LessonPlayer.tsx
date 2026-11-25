@@ -1,4 +1,5 @@
-import { useRef, useState } from 'react'
+import { useImperativeHandle, useRef, useState } from 'react'
+import type { Ref } from 'react'
 import type { Course, LessonProgress } from './learning'
 import styles from './Learning.module.css'
 
@@ -7,16 +8,24 @@ function time(seconds: number) {
   return [Math.floor(whole / 60), whole % 60].map(value => String(value).padStart(2, '0')).join(':')
 }
 
-export function LessonPlayer({ sample, initial, onProgress }: {
+export function PlaybackIcon({ playing }: { playing: boolean }) {
+  return <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" width="12" height="12">
+    {playing ? <path d="M4 3h3v10H4zm5 0h3v10H9z" /> : <path d="M5 3l8 5-8 5z" />}
+  </svg>
+}
+
+export function LessonPlayer({ sample, initial, onProgress, playing, onPlayingChange, ref }: {
   sample: NonNullable<Course['sample']>
   initial: LessonProgress
   onProgress: (seconds: number, completed: boolean) => void
+  playing: boolean
+  onPlayingChange: (playing: boolean) => void
+  ref: Ref<{ toggle: () => void }>
 }) {
   const player = useRef<HTMLDivElement>(null)
   const video = useRef<HTMLVideoElement>(null)
   const [seconds, setSeconds] = useState(initial.completed ? 0 : initial.seconds)
   const [duration, setDuration] = useState(0)
-  const [playing, setPlaying] = useState(false)
   const [speed, setSpeed] = useState(1)
   const [error, setError] = useState(false)
 
@@ -29,6 +38,8 @@ export function LessonPlayer({ sample, initial, onProgress }: {
     else media.pause()
   }
 
+  useImperativeHandle(ref, () => ({ toggle }))
+
   return <div className={styles.player} ref={player}>
     <video src={sample.source} poster={sample.poster} preload="metadata" playsInline ref={video} muted
       onLoadedMetadata={event => {
@@ -36,9 +47,9 @@ export function LessonPlayer({ sample, initial, onProgress }: {
         setDuration(media.duration)
         if (!initial.completed && initial.seconds > 0) media.currentTime = Math.min(initial.seconds, Math.max(0, media.duration - 0.15))
       }}
-      onPlaying={() => { setPlaying(true); setError(false) }}
+      onPlaying={() => { onPlayingChange(true); setError(false) }}
       onPause={event => {
-        setPlaying(false)
+        onPlayingChange(false)
         if (event.currentTarget.currentTime > 0 && !event.currentTarget.ended) {
           onProgress(event.currentTarget.currentTime, false)
         }
@@ -49,7 +60,7 @@ export function LessonPlayer({ sample, initial, onProgress }: {
         if (current > 0 && !event.currentTarget.ended) onProgress(current, false)
       }}
       onEnded={event => {
-        setPlaying(false)
+        onPlayingChange(false)
         onProgress(event.currentTarget.duration, true)
       }}
       onError={() => setError(true)} />
@@ -58,7 +69,7 @@ export function LessonPlayer({ sample, initial, onProgress }: {
     </button>}
     {error && <p role="status" className={styles.playerError}>ویدیو در این مرورگر پخش نشد.</p>}
     <div className={styles.controls}>
-      <button type="button" aria-label={playing ? 'توقف ویدیو' : 'پخش ویدیو'} onClick={toggle}>{playing ? 'Ⅱ' : '▶'}</button>
+      <button type="button" aria-label={playing ? 'توقف ویدیو' : 'پخش ویدیو'} onClick={toggle}><PlaybackIcon playing={playing} /></button>
       <time>{time(seconds)}</time>
       <input type="range" min={0} max={duration || 1} step={0.05} value={seconds}
         aria-label="موقعیت پخش" aria-valuetext={time(seconds)} disabled={!duration}

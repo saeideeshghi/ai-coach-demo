@@ -89,8 +89,8 @@
 .instructor { display: block; color: #ce8b59; font: italic 11px / 16px Georgia, serif; }
 .metadata, .progressRow { display: flex; align-items: center; gap: 9px; color: #d3c8bf; font-size: 10px; }
 .metadata { justify-content: space-between; max-inline-size: min(100%, 256px); }
-.progressRow progress { flex: 1; direction: ltr; appearance: none; inline-size: 100%; block-size: 6px; border: 0; border-radius: 6px; overflow: clip; }
-.progressRow progress::-webkit-progress-bar { background: #595657; }
+.progressRow progress { flex: 1; direction: ltr; appearance: none; inline-size: 100%; block-size: 6px; border: 0; border-radius: 6px; overflow: hidden; background: #595657; }
+.progressRow progress::-webkit-progress-bar { background: transparent; }
 .progressRow progress::-webkit-progress-value { background: #ff641f; border-radius: 6px; }
 .progressRow progress::-moz-progress-bar { background: #ff641f; border-radius: 6px; }
 .pill {
@@ -180,6 +180,7 @@
 .controls .speed { min-inline-size: 38px; }
 .controls input { flex: 1; min-inline-size: 0; block-size: 3px; border-radius: 2px; appearance: none; cursor: pointer; }
 .controls input::-webkit-slider-thumb { appearance: none; inline-size: 4px; block-size: 8px; border-radius: 2px; background: #ff641f; }
+.controls input::-moz-range-track { background: transparent; }
 .controls input::-moz-range-thumb { inline-size: 4px; block-size: 8px; border: 0; border-radius: 2px; background: #ff641f; }
 .controls input:focus-visible { outline: 1px solid #ff9a65; outline-offset: 3px; }
 .playerError { position: relative; color: #fff3e8; background: #121212d9; padding: 8px; }
@@ -233,4 +234,18 @@
   .syllabus { margin: 11px 12px 9px; }
   .syllabus header { min-block-size: 29px; }
   .syllabus li button { min-block-size: 29px; padding-block: 2px; font-size: 11.5px; line-height: 17px; }
+}
+
+/* Preserve the reference proportions when the browser exposes a wider CSS viewport. */
+@container (width > 390px) {
+  .courseHero { block-size: 54.1cqi; padding-inline: 10.77cqi 4.1cqi; }
+  .courseHero img, .courseHero::after { block-size: 80cqi; }
+  .courseHero h1 { font-size: 5.9cqi; line-height: 8.2cqi; }
+  .courseHero p { font-size: 3.2cqi; line-height: 5.38cqi; }
+  .featured { margin-inline: 4.1cqi; padding: 2.82cqi 2.82cqi 2.56cqi; }
+  .featureCopy h2 { font-size: 2.97cqi; line-height: 5.13cqi; }
+  .courses { margin-inline: 4.1cqi; }
+  .courseCard { min-block-size: 21.54cqi; }
+  .courseCard img { block-size: 21.54cqi; }
+  .cardCopy { font-size: 3.33cqi; line-height: 4.87cqi; }
 }
