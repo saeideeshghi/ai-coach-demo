@@ -1,0 +1,52 @@
+.overlay {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: grid;
+  align-items: end;
+  overflow: clip;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: var(--sheet-scrim, #2121218c);
+  backdrop-filter: blur(var(--sheet-blur, 15px));
+  animation: backdrop-enter var(--sheet-scrim-duration, 260ms) ease-out both;
+}
+
+.panel {
+  position: sticky;
+  inset-block-end: 0;
+  min-block-size: 0;
+  max-block-size: min(100%, 100dvh);
+  overflow: auto;
+  overscroll-behavior: contain;
+  align-content: start;
+  animation: panel-enter var(--sheet-duration, 340ms) var(--sheet-easing, cubic-bezier(.36, 0, .24, 1)) both;
+}
+
+.overlay[data-entrance='fade'] .backdrop,
+.overlay[data-entrance='fade'] .panel {
+  animation: backdrop-enter 150ms ease-out both;
+}
+
+.panel[data-sheet='paid'] { --sheet-travel: 108px; --sheet-duration: 155ms; }
+.panel[data-sheet='start'] { --sheet-duration: 310ms; }
+.panel[data-sheet='saved'] { --sheet-duration: 310ms; }
+.overlay[data-preset='audio'] { --sheet-duration: 310ms; --sheet-scrim-duration: 305ms; }
+.overlay[data-preset='complete'] { --sheet-duration: 245ms; --sheet-scrim-duration: 270ms; }
+
+@keyframes backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes panel-enter {
+  from { transform: translateY(var(--sheet-travel, 100%)); }
+  to { transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdrop, .panel, .overlay[data-entrance='fade'] :is(.backdrop, .panel) { animation: none; }
+}

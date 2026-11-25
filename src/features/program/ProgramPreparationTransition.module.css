@@ -1,0 +1,58 @@
+.overlay {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #070808cc;
+  color: #f4eee7;
+  text-align: center;
+  animation: preparation var(--preparation-time, 2200ms) linear both;
+}
+
+.message {
+  inline-size: min(336px, calc(100% - 44px));
+  padding-block-end: 8px;
+  animation: preparation-message 160ms ease-out both;
+}
+
+.message strong { font: 700 18px / 29px var(--raya-font-family); }
+.message p { margin: 8px auto 0; max-inline-size: 275px; color: #b4aaa3; font: 400 12.6px / 20px var(--raya-font-family); }
+
+.dots {
+  display: flex;
+  direction: ltr;
+  justify-content: center;
+  gap: 11px;
+  margin-block-end: 15px;
+}
+
+.dots i {
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  background: #ff641f;
+  animation: dot 700ms steps(1, end) infinite;
+}
+
+.dots i:first-child { animation-delay: -234ms; }
+.dots i:nth-child(3) { animation-delay: -467ms; }
+
+@keyframes dot {
+  0% { background-color: #ffe6d0; }
+  33.333%, 100% { background-color: #ff641f; }
+}
+
+@keyframes preparation {
+  0%, 92% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes preparation-message {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay, .message, .dots i { animation: none; }
+}

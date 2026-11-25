@@ -1,0 +1,23 @@
+@import './fonts.css';
+
+:root {
+  --raya-account-action-fill: linear-gradient(90deg, #ff521b, #ff913a);
+  --raya-program-action-fill: linear-gradient(90deg, #ff521d, #ff943f);
+  --raya-details-action-fill: linear-gradient(90deg, #ff541e, #ff742e 51.9231%, #ff933e);
+  --raya-program-surface: #0d0e11;
+  --raya-reference-frame-border: #4a3b35;
+  --raya-account-action-shadow: 0 7px 17px rgb(255 104 24 / 18%);
+  --raya-font-family: Kahroba, sans-serif;
+  color-scheme: dark;
+  background: #111;
+}
+
+body {
+  margin: 0;
+}
+
+/* Keep the outgoing screen visible through the route crossfade. */
+:root.raya-route-fade::view-transition-old(root),
+:root.raya-route-fade::view-transition-new(root) {
+  animation-duration: 200ms;
+}

@@ -1,0 +1,108 @@
+.screen {
+  --frame-unit: calc(100cqi / 390);
+
+  box-sizing: border-box;
+  min-block-size: calc(844 * var(--frame-unit));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(104 * var(--frame-unit)) 0 34px;
+  background: #111110 url('../../assets/welcome/welcome-background.webp') center bottom / 100% auto no-repeat;
+  color: #faf7f3;
+  font-family: var(--raya-font-family);
+  text-align: center;
+}
+
+.brand {
+  display: grid;
+  justify-items: center;
+  gap: calc(17 * var(--frame-unit));
+}
+
+.logo,
+.wordmark {
+  display: block;
+}
+
+.title {
+  margin: calc(38 * var(--frame-unit)) 0 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 46px;
+}
+
+.title:focus {
+  outline: none;
+}
+
+.copy {
+  margin: calc(22 * var(--frame-unit)) 12px 0;
+  color: rgb(184 181 179 / 91%);
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.accent {
+  margin-block-start: calc(30 * var(--frame-unit));
+  inline-size: 42px;
+  block-size: 1.5px;
+  border-radius: 0.75px;
+  background: linear-gradient(90deg, #ff4a10, #ffa530);
+  opacity: 0.96;
+  box-shadow: 0 0 5px rgb(255 104 24 / 25%);
+}
+
+.actions {
+  inline-size: min(308px, 79%);
+  display: grid;
+  gap: 14px;
+  margin-block-start: calc(52.5 * var(--frame-unit));
+}
+
+.actions button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  padding: 2px 36px 0;
+  opacity: 1;
+  border-radius: 14px;
+  font: 600 14.8px / 1.5 var(--raya-font-family);
+}
+
+.actions button img {
+  position: absolute;
+  inset-inline-end: 19px;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+
+.signin {
+  min-block-size: 51px;
+  border: 0;
+  background: linear-gradient(90deg, #ff4a10, #ff6818 58%, #ffa530);
+  box-shadow: 0 8px 19px rgb(255 104 24 / 25%);
+  color: #fff;
+}
+
+.actions .signup {
+  min-block-size: 49px;
+  border: 1px solid rgb(255 255 255 / 23%);
+  background: rgb(16 16 15 / 75%);
+  color: rgb(250 247 243 / 98%);
+  font-size: 14.5px;
+}
+
+.signup img {
+  opacity: 0.62;
+}
+
+.actions button:enabled {
+  cursor: pointer;
+}
+
+.actions button:focus-visible {
+  outline: 2px solid #ff9a65;
+  outline-offset: 3px;
+}

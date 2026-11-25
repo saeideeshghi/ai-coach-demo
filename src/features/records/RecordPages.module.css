@@ -1,0 +1,124 @@
+.page {
+  --raya-field-border: #34343a;
+  --raya-field-focus: #ffa16a;
+  --raya-field-placeholder: #b4aaa3;
+  --raya-radius-14: 14px;
+  --raya-success: #69d6ad;
+  --raya-glass-subtle: #161719;
+  --raya-border-subtle: #ffffff1a;
+  --raya-text-primary: #f4eee7;
+  --raya-text-on-action: #fff5eb;
+  --raya-auth-primary-fill: var(--raya-program-action-fill);
+  --raya-auth-primary-shadow: var(--raya-account-action-shadow);
+  --raya-auth-secondary-fill: #161719;
+  --raya-auth-secondary-stroke: #ffffff1a;
+  --raya-action-destructive: #f18471;
+  --raya-splash-accent: #ff641f;
+
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  block-size: calc(100cqi * 844 / 390);
+  background: radial-gradient(ellipse 280px 170px at right top, #30201d, transparent 75%), var(--raya-program-surface);
+  color: #f4eee7;
+  font: 400 13px / 1.65 var(--raya-font-family);
+}
+.page[data-with-nav] { padding-block-end: var(--raya-program-nav-clearance); }
+.page :where(button, input, textarea, select) { font-family: inherit; }
+.page :where(input:not([type='search'], [type='checkbox']), textarea, select):focus-visible {
+  outline: 1px solid var(--raya-field-focus);
+  outline-offset: 1px;
+}
+.page :where(h1, h2, h3, p) { margin: 0; }
+.scroll { flex: 1; }
+.heading { position: relative; padding: 46px 32px 13px; text-align: center; }
+.heading h1 { font-size: 24px; line-height: 37px; }
+.heading h1:focus { outline: none; }
+.heading p { color: #b4aaa3; font-size: 12px; }
+.page:is([data-view='report'], [data-view='account-edit']) .heading { padding-block-start: 62px; }
+.page:is([data-view='calendar'], [data-view='session']) .heading { padding-block-start: 56px; }
+.page[data-view='report'] .heading { padding-block-start: 71px; padding-block-end: 15px; }
+.page[data-view='report'] .footer { padding-block-end: 42px; }
+.page[data-view='calendar'] .heading { padding-block-start: 61px; padding-block-end: 16px; }
+.page[data-view='calendar'] .heading h1 { font-size: 22px; }
+.page[data-view='calendar'] .heading p { margin-block-start: 3px; }
+.page[data-view='notifications'] .heading { padding: 72px 24px 13px; text-align: start; }
+.back, .calendarButton {
+  position: absolute;
+  inset-block-start: 44px;
+  inset-inline-start: 12px;
+  display: grid;
+  place-items: center;
+  inline-size: 40px;
+  block-size: 40px;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+}
+.back svg { inline-size: 17px; block-size: 17px; }
+.back[data-end], .calendarButton { inset-inline: auto 8px; }
+.content { display: grid; gap: 10px; padding: 0 16px 13px; min-inline-size: 0; }
+.content [role='group'] > button { flex: 1 1 0; min-inline-size: 0; }
+.footer { display: grid; gap: 7px; padding: 6px 16px 28px; }
+.footer > button { position: relative; }
+.footer > button > svg { position: absolute; inset-inline-end: 14px; }
+.downloadIcon { position: absolute; inset-inline-end: 14px; inset-block-start: calc(50% - 8px); }
+.noteAddIcon { vertical-align: middle; margin-inline-end: 5px; }
+.page:is([data-view='note-edit'], [data-view='account-edit']) .footer > button { border-radius: 26px; }
+
+.heading[data-history] {
+  box-sizing: border-box;
+  min-block-size: 210px;
+  display: grid;
+  align-content: end;
+  text-align: start;
+  padding: 58px 18px 12px;
+  background: linear-gradient(0deg,#0d0e11,transparent 58%), url('../../assets/records/history-hero.webp') center top / cover;
+}
+.heading[data-history] h1 { font-size: 21px; line-height: 30px; }
+.emptyHistory, .sessionIdentity, .accountIdentity {
+  min-inline-size: 0;
+  border: 1px solid #ffffff1a;
+  border-radius: 14px;
+  background: linear-gradient(#1a1a1b,#121315);
+}
+.emptyHistory { padding: 27px 12px; color: #b4aaa3; text-align: center; }
+
+.sessionIdentity, .accountIdentity { display: grid; grid-template-columns: auto minmax(0,1fr) minmax(0,1.3fr); gap: 11px; align-items: center; padding: 13px; }
+.sessionIdentity img, .accountIdentity img { inline-size: 50px; block-size: 50px; object-fit: cover; border-radius: 50%; }
+.sessionIdentity span, .accountIdentity span { display: grid; }
+.sessionIdentity small, .accountIdentity small, .meta { color: #b4aaa3; font-size: 11px; }
+.sessionIdentity span:last-child { padding-inline-start: 9px; border-inline-start: 1px solid #303036; }
+.content section:has(.detailIcon) { position: relative; min-block-size: 100px; padding-inline-end: 75px; }
+.detailIcon { position: absolute; inset: 20px auto auto 15px; inline-size: 42px; block-size: 42px; }
+.recording { inline-size: 100%; max-block-size: 260px; background: #080808; border-radius: 12px; }
+.accountIdentity { grid-template-columns: auto minmax(0,1fr) auto; }
+.accountIdentity button { min-block-size: 30px; padding-inline: 11px; border-radius: 18px; border: 1px solid #414145; background: #252528; color: inherit; cursor: pointer; }
+.accountIdentity span { text-align: center; }
+.accountRows { margin: 0; }
+.accountRows > div, .accountRowButton, .about summary { display: flex; justify-content: space-between; align-items: center; gap: 7px; min-block-size: 29px; padding: 0 9px; border-radius: 7px; background: #ffffff08; }
+.accountRows dd { margin: 0; overflow-wrap: anywhere; color: #b4aaa3; }
+.accountRowButton { border: 0; color: inherit; cursor: pointer; }
+.about summary { cursor: pointer; }
+.about p { padding: 8px; color: #b4aaa3; }
+.signOut { display: grid; gap: 6px; text-align: center; }
+.page[data-view='account'] .content { gap: 7px; }
+.page[data-view='account'] .content section:not(.accountIdentity) { padding: 8px 11px; gap: 4px; }
+.page[data-view='account'] .content label[data-compact='true'] { min-block-size: 29px; font-size: 12px; }
+.search { display: flex; align-items: center; gap: 7px; padding: 6px 10px; border: 1px solid #38383c; border-radius: 14px; background: #17181a; }
+.search input { flex: 1; min-inline-size: 0; border: 0; outline: 0; background: transparent; color: inherit; }
+.search:focus-within { border-color: #ffa16a; }
+@container (max-width: 355px) {
+  .heading { padding-block-start: 35px; }
+  .page:is([data-view='report'], [data-view='account-edit']) .heading { padding-block-start: 45px; }
+  .page:is([data-view='calendar'], [data-view='session']) .heading { padding-block-start: 43px; }
+  .page[data-view='report'] .footer { padding-block-end: 18px; }
+  .page[data-view='notifications'] .heading { padding-block-start: 61px; }
+  .heading h1 { font-size: 20px; line-height: 34px; }
+  .heading[data-history] { min-block-size: 172px; }
+  .heading[data-history] h1 { font-size: 18px; }
+  .back, .calendarButton { inset-block-start: 29px; }
+  .content { padding-inline: 12px; gap: 8px; }
+  .footer { padding-inline: 12px; padding-block-end: 17px; }
+}

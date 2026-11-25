@@ -1,0 +1,230 @@
+.splash {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  container-type: inline-size;
+  inline-size: 100%;
+  aspect-ratio: 390 / 844;
+  background: var(--raya-splash-surface) url('./splash-background.svg') center /
+    100% 100% no-repeat;
+  color: var(--raya-splash-text);
+}
+
+/* Brand layout */
+.brand {
+  position: absolute;
+  inset-block-start: 28%;
+  inset-inline: 0;
+  display: grid;
+  justify-items: center;
+  animation: lift var(--opening-duration) ease-in-out both;
+}
+
+.mark {
+  position: relative;
+  inline-size: 37.4%;
+  aspect-ratio: 249 / 255;
+}
+
+.mark img {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  animation: assemble var(--opening-duration) ease-out both;
+  animation-delay: var(--piece-delay, 0ms);
+}
+
+.topLeft {
+  --offset-x: -52%;
+  --offset-y: -37%;
+  --angle: -65deg;
+}
+
+.topRight {
+  --offset-x: 52%;
+  --offset-y: -44%;
+  --angle: 70deg;
+  --piece-delay: 40ms;
+}
+
+.bottomLeft {
+  --offset-x: -46%;
+  --offset-y: 44%;
+  --angle: 65deg;
+  --piece-delay: 80ms;
+}
+
+.bottomRight {
+  --offset-x: 49%;
+  --offset-y: 38%;
+  --angle: -65deg;
+  --piece-delay: 120ms;
+}
+
+.name {
+  margin: 4.7cqi 0 0;
+  inline-size: 33.86%;
+  animation: reveal-name var(--opening-duration) ease-out both;
+}
+
+.name img {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+
+.tagline {
+  inline-size: 38.2%;
+  margin-block-start: 9.6cqi;
+  animation: reveal-tagline var(--opening-duration) ease-out both;
+}
+
+/* Footer handoff */
+.footer {
+  position: absolute;
+  inset-block-end: 7.35%;
+  inset-inline: 0;
+  display: grid;
+  place-items: center;
+}
+
+.credit,
+.loading {
+  grid-area: 1 / 1;
+}
+
+.credit {
+  inline-size: 29%;
+  animation: credit var(--opening-duration) linear both;
+}
+
+.loading {
+  inline-size: 35.4%;
+  block-size: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--raya-splash-track);
+  animation: show-loading var(--opening-duration) linear both;
+}
+
+.loading::after {
+  content: '';
+  display: block;
+  direction: ltr;
+  margin-right: auto;
+  inline-size: 29%;
+  block-size: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    var(--raya-splash-glow),
+    var(--raya-splash-accent)
+  );
+  animation: sweep var(--opening-duration) linear both;
+}
+
+/* Animation timeline */
+@keyframes assemble {
+  0%,
+  3% {
+    opacity: 0;
+    transform: translate(var(--offset-x), var(--offset-y)) rotate(var(--angle))
+      scale(0.55);
+  }
+  21%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reveal-name {
+  0%,
+  23% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  32%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes reveal-tagline {
+  0%,
+  29% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  37%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes lift {
+  0%,
+  44% {
+    transform: none;
+  }
+  52.4%,
+  100% {
+    transform: translateY(-6cqi);
+  }
+}
+
+@keyframes credit {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  52.4%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes show-loading {
+  0%,
+  52.4% {
+    opacity: 0;
+  }
+  54.8%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes sweep {
+  0%,
+  53.6% {
+    transform: translateX(-100%);
+  }
+  81.7% {
+    transform: translateX(345%);
+  }
+  81.71%,
+  82.1% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(190%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand,
+  .mark img,
+  .name,
+  .tagline,
+  .credit,
+  .loading,
+  .loading::after {
+    animation: none;
+  }
+
+  .loading { display: none; }
+}

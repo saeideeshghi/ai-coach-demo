@@ -1,0 +1,88 @@
+.field {
+  min-inline-size: 0;
+}
+
+.label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-block-size: var(--raya-field-height, 41px);
+  border: 1px solid var(--raya-account-border);
+  border-radius: 15.6px;
+  background: var(--raya-account-fill);
+}
+
+.control:focus-within {
+  outline: 2px solid var(--raya-control-focus);
+  outline-offset: 2px;
+}
+
+.control[data-invalid='true'] {
+  border-color: var(--raya-field-error);
+}
+
+.icon {
+  flex: none;
+  margin-inline-start: 13px;
+}
+
+.control input {
+  flex: 1;
+  box-sizing: border-box;
+  min-inline-size: 0;
+  min-block-size: calc(var(--raya-field-height, 41px) - 2px);
+  padding: 0 8px;
+  border: 0;
+  outline: none;
+  text-align: right;
+  color: #f2f2f2;
+  background: transparent;
+  font: 400 var(--raya-field-font, 15.068px) / 1.4 var(--raya-font-family);
+}
+
+.control input::placeholder {
+  color: #9c9c9c;
+  text-align: right;
+  direction: rtl;
+  opacity: 1;
+}
+
+.visibility {
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  min-block-size: calc(var(--raya-field-height, 41px) - 2px);
+  margin-inline-end: 17px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.visibility:focus-visible {
+  outline: 2px solid var(--raya-control-focus);
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+
+.error {
+  margin: 4px 8px 0;
+  color: var(--raya-field-error);
+  font-size: 12px;
+}
+
+.control[data-leading-eye='true'] .visibility {
+  order: -1;
+  inline-size: 41px;
+  margin-inline: 5px 0;
+}

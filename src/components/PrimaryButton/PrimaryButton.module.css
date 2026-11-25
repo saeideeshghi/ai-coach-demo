@@ -1,0 +1,69 @@
+/* Layout and typography */
+.button {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  min-block-size: 51px;
+  box-sizing: border-box;
+  padding-block: 8px;
+  padding-inline: 16px;
+  border: 0;
+  border-radius: var(--raya-radius-14);
+  font: 600 14.8px / 24px var(--raya-font-family);
+  overflow-wrap: anywhere;
+  text-align: center;
+  color: #fff;
+  background: var(--raya-auth-primary-fill);
+  box-shadow: var(--raya-auth-primary-shadow);
+  cursor: pointer;
+}
+
+/* Interaction states */
+.button:active:not(:disabled) {
+  filter: brightness(0.91);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--raya-text-primary);
+  outline-offset: 3px;
+}
+
+.button:disabled {
+  opacity: 0.48;
+  box-shadow: none;
+  cursor: default;
+}
+
+/* Program action variant from the reference board */
+.button[data-appearance='program'] {
+  background: var(--raya-program-action-fill);
+  color: #fff6ec;
+  font-size: 13.2px;
+  min-block-size: 52px;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+/* Intrinsic action width and optional trailing navigation arrow */
+.button[data-compact='true'] {
+  inline-size: fit-content;
+  min-inline-size: min(100%, 189px);
+  max-inline-size: 100%;
+  min-block-size: 52px;
+  font-size: 12.5px;
+}
+.button[data-arrow='true'] {
+  position: relative;
+  padding-inline: 28px;
+}
+.arrow {
+  position: absolute;
+  inset-inline-end: 10px;
+  inset-block-start: 50%;
+  inline-size: 14px;
+  block-size: 14px;
+  transform: translateY(-50%);
+}
+.button:dir(ltr) .arrow {
+  transform: translateY(-50%) scaleX(-1);
+}

@@ -1,0 +1,98 @@
+export const demoSystems = [
+  {
+    id: "leadership",
+    title: "مبانی سیستم رهبری کسب‌وکار",
+    subtitle: "Foundations of Your Leadership System",
+    subsystems: [
+      { title: "مدیریت زمان و اولویت‌های فردی", subtitle: "Managing Your Time" },
+      { title: "خودسازمان‌دهی و نظم فردی", subtitle: "Self-Organization" },
+      { title: "هدف بنیادین شخصیِ صاحب کسب‌وکار", subtitle: "Your Primary Aim" },
+      { title: "ارزش‌های بنیادین شرکت", subtitle: "Company Values" },
+      { title: "وعدهٔ برند", subtitle: "Brand Promise" },
+      { title: "هدف راهبردی کسب‌وکار", subtitle: "Strategic Objective" },
+      { title: "شاخص‌های کلیدی راهبردی (KSI)", subtitle: "Key Strategic Indicators" },
+      { title: "فرایند شناسایی و رفع ریشه‌ای مسائل تکرارشونده", subtitle: "Key Frustrations Process" },
+    ],
+  },
+  {
+    id: "marketing",
+    title: "مبانی سیستم بازاریابی",
+    subtitle: "Foundations of Your Marketing System",
+    subsystems: [
+      { title: "مشتری هدف با بیشترین احتمال خرید", subtitle: "Most Probable Customer" },
+      { title: "محدودهٔ جغرافیایی بازار هدف", subtitle: "Trading Area" },
+      { title: "ادراک و رفتار مشتریان", subtitle: "Customer Perceptions and Behavior" },
+      { title: "جایگاه‌یابی و متمایزسازی کسب‌وکار", subtitle: "Positioning and Differentiating Your Business" },
+      { title: "مجموعهٔ عناصر بصری و حسی برند", subtitle: "Image and Sensory Package" },
+      { title: "راهبرد بازاریابی", subtitle: "Marketing Strategy" },
+    ],
+  },
+  {
+    id: "management",
+    title: "مبانی سیستم مدیریت کسب‌وکار",
+    subtitle: "Foundations of Your Management System",
+    subsystems: [
+      { title: "شناسایی و تعیین استانداردهای عملکرد", subtitle: "Identifying and Setting Standards" },
+      { title: "راهبرد ساختار سازمانی", subtitle: "Organizational Strategy" },
+      { title: "توافق‌نامه‌های نقش، مسئولیت و نتایج مورد انتظار", subtitle: "Position Agreements" },
+      { title: "جلسات رشد و توسعهٔ کارکنان", subtitle: "Employee Development Meetings" },
+      { title: "روابط کاری اثربخش و مبتنی بر اعتماد و پاسخ‌گویی", subtitle: "Working Relationships That Work" },
+      { title: "جلسهٔ سراسری شرکت", subtitle: "The Company Meeting" },
+      { title: "سیستم‌سازی عملیات کسب‌وکار", subtitle: "Systematizing Your Operations" },
+      { title: "راهنمای مدون عملیات اجرایی", subtitle: "Operations Manual" },
+      { title: "طراحی و مستندسازی سیستم‌ها و فرایندها", subtitle: "System Design and Documentation" },
+    ],
+  },
+  {
+    id: "finance",
+    title: "مبانی سیستم مالی",
+    subtitle: "Foundations of Your Finance System",
+    subsystems: [
+      { title: "مدیریت مالی کسب‌وکار", subtitle: "Financial Management" },
+      { title: "سیستم حسابداری", subtitle: "Accounting System" },
+      { title: "اسناد و گزارش‌های مالی", subtitle: "Financial Documentation and Reports" },
+      { title: "برنامهٔ بودجه‌ریزی", subtitle: "Budget Plan" },
+      { title: "سیستم مدیریت وجوه نقد", subtitle: "Cash Management System" },
+      { title: "سیستم وصول مطالبات", subtitle: "Collections System" },
+      { title: "سیستم‌های کنترل و پایش کسب‌وکار", subtitle: "Business Control Systems" },
+      { title: "شاخص‌های کلیدی مالی", subtitle: "Key Financial Indicators" },
+    ],
+  },
+  {
+    id: "fulfillment",
+    title: "مبانی سیستم ایفای تعهدات به مشتری",
+    subtitle: "Foundations of Your Customer Fulfillment System",
+    subsystems: [
+      { title: "راهبرد و طراحی محصول یا خدمت", subtitle: "Product Strategy and Design" },
+      { title: "ارزیابی سیستم‌های اجرایی", subtitle: "Systems Evaluation" },
+      { title: "سنجش وضعیت مبنا در ایفای تعهدات به مشتری", subtitle: "Customer Fulfillment Baseline" },
+      { title: "نوآوری و بهبود سیستم‌های اجرایی", subtitle: "Systems Innovation" },
+      { title: "زیرسیستم تولید یا ارائهٔ خدمت", subtitle: "Production Subsystem" },
+      { title: "زیرسیستم تحویل محصول یا خدمت", subtitle: "Delivery Subsystem" },
+      { title: "زیرسیستم خدمات و پشتیبانی مشتری", subtitle: "Customer Service Subsystem" },
+    ],
+  },
+  {
+    id: "conversion",
+    title: "مبانی سیستم تبدیل سرنخ به مشتری",
+    subtitle: "Foundations of Your Lead Conversion System",
+    subsystems: [
+      { title: "سنجش وضعیت مبنای تبدیل سرنخ به مشتری", subtitle: "Lead Conversion Baseline" },
+      { title: "فرایند تبدیل سرنخ به مشتری", subtitle: "Lead Conversion Process" },
+      { title: "ارائه‌های اثربخش فروش برای تبدیل سرنخ به مشتری", subtitle: "Effective Presentations for Lead Conversion" },
+    ],
+  },
+  {
+    id: "generation",
+    title: "مبانی سیستم جذب سرنخ فروش",
+    subtitle: "Foundations of Your Lead Generation System",
+    subsystems: [
+      { title: "سنجش وضعیت مبنای جذب سرنخ فروش", subtitle: "Lead Generation Baseline" },
+      { title: "کانال‌های جذب سرنخ فروش", subtitle: "Lead Generation Channels" },
+      { title: "پیام جذب سرنخ فروش", subtitle: "Lead Generation Message" },
+      { title: "فرایند جذب سرنخ فروش", subtitle: "Lead Generation Process" },
+    ],
+  },
+] as const
+
+export type DemoSystem = (typeof demoSystems)[number]

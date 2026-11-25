@@ -1,0 +1,252 @@
+.overlay {
+  --sheet-scrim: #100f10a0;
+  --sheet-blur: 13px;
+}
+
+.sheet {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-block-size: min(623px, 100%, 100dvh);
+  padding: 24px 16px 35px;
+  border: 1px solid #ffffff25;
+  border-radius: 26px 26px 0 0;
+  color: #f4eee7;
+  background: linear-gradient(150deg, #1b1c1df0, #111213fa);
+}
+
+.handle {
+  flex: none;
+  align-self: center;
+  inline-size: 36px;
+  block-size: 4px;
+  margin-block-end: 24px;
+  border-radius: 10px;
+  background: #ffffff25;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-block-end: 16px;
+}
+
+.header h2 {
+  margin: 0;
+  font: 700 20px / 30px var(--raya-font-family);
+}
+
+.header p,
+.voices small,
+.toggle small {
+  display: block;
+  margin: 0;
+  color: #b4aaa3;
+  font: 400 12px / 20px var(--raya-font-family);
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  inline-size: 40px;
+  block-size: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  color: #d1c6bd;
+  background: #ffffff08;
+  cursor: pointer;
+}
+
+.sheet fieldset {
+  min-inline-size: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.sheet legend {
+  margin-block-end: 8px;
+  padding: 0;
+  font: 600 14px / 21px var(--raya-font-family);
+}
+
+.voices,
+.speeds {
+  display: grid;
+  gap: 8px;
+}
+
+.voices {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.speeds {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-inline: 8px;
+}
+
+.voices label,
+.speeds label,
+.sample {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  border: 1px solid #ffffff1a;
+  border-radius: 12px;
+  background: #ffffff08;
+  color: #f4eee7;
+  font: 400 14px / 20px var(--raya-font-family);
+  cursor: pointer;
+}
+
+.voices label {
+  justify-content: space-between;
+  min-block-size: 64px;
+}
+
+.speeds label {
+  position: relative;
+  justify-content: center;
+  min-block-size: 40px;
+  padding-inline: 3px;
+  color: #b4aaa3;
+  text-align: center;
+}
+
+.voices input {
+  flex: none;
+  accent-color: #ff641f;
+}
+
+.speeds input {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  opacity: 0;
+}
+
+.voices label:has(:checked),
+.speeds label:has(:checked) {
+  border-color: #ff641f;
+  background: #ff641f13;
+}
+
+.speeds label:has(:checked) {
+  color: #ff853e;
+}
+
+.voices label:has(:focus-visible),
+.speeds label:has(:focus-visible),
+.toggle input:focus-visible {
+  outline: 2px solid #ff9a65;
+  outline-offset: 2px;
+}
+
+.sample {
+  flex: none;
+  justify-content: center;
+  min-block-size: 44px;
+  margin-block: 8px 17px;
+}
+
+.sample { position: relative; }
+
+.sample svg {
+  inline-size: 22px;
+  block-size: 22px;
+  color: #ff641f;
+}
+
+.sample:disabled {
+  cursor: default;
+  color: #b4aaa3;
+}
+
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  min-block-size: 53px;
+  border-block-end: 1px solid #ffffff16;
+  font: 600 14px / 22px var(--raya-font-family);
+  cursor: pointer;
+}
+
+.sheet fieldset + .toggle {
+  margin-block-start: 9px;
+}
+
+.toggle input {
+  appearance: none;
+  position: relative;
+  flex: none;
+  inline-size: 44px;
+  block-size: 26px;
+  margin: 0;
+  border: 0;
+  border-radius: 16px;
+  background: #393839;
+  cursor: inherit;
+}
+
+.toggle input::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 3px;
+  inset-inline-end: 3px;
+  inline-size: 20px;
+  block-size: 20px;
+  border-radius: 50%;
+  background: #f4eee7;
+}
+
+.toggle input:checked {
+  background: #ff641f;
+}
+
+.toggle input:checked::before {
+  inset-inline-end: 21px;
+}
+
+.save,
+.reset {
+  flex: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.save {
+  min-block-size: 48px;
+  margin-block-start: 10px;
+  border-radius: 15px;
+  background: var(--raya-account-action-fill);
+  color: #fff;
+  font: 600 16px / 1.4 var(--raya-font-family);
+}
+
+.reset {
+  min-block-size: 34px;
+  background: transparent;
+  color: #b4aaa3;
+  font: 400 12px / 1.4 var(--raya-font-family);
+}
+
+.notice {
+  margin: 0 0 5px;
+  color: #ffd0ba;
+  font-size: 11px;
+}
+
+@container (max-width: 355px) {
+  .sheet { min-block-size: min(588px, 100%, 100dvh); padding-block-end: 18px; }
+  .handle { margin-block-end: 17px; }
+  .voices label, .speeds label { font-size: 12px; }
+  .toggle { min-block-size: 47px; font-size: 13px; }
+}

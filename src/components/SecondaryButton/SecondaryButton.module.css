@@ -1,0 +1,88 @@
+/* Layout and typography */
+.button {
+  display: grid;
+  place-items: center;
+  inline-size: 100%;
+  min-block-size: 49px;
+  box-sizing: border-box;
+  padding-block: 8px;
+  padding-inline: 16px;
+  border: 1px solid var(--raya-auth-secondary-stroke);
+  border-radius: var(--raya-radius-14);
+  font: 600 14.5px / 24px var(--raya-font-family);
+  overflow-wrap: anywhere;
+  text-align: center;
+  color: var(--raya-text-primary);
+  background: var(--raya-auth-secondary-fill);
+  cursor: pointer;
+}
+
+/* Interaction states */
+.button:active:not(:disabled) {
+  background: #242127;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--raya-text-primary);
+  outline-offset: 3px;
+}
+
+.button:disabled {
+  opacity: 0.48;
+  cursor: default;
+}
+
+.button[data-appearance='accent-outline'] {
+  border-color: var(--raya-splash-accent);
+  background: transparent;
+  color: var(--raya-field-focus);
+}
+.button[data-appearance='accent-outline']:active:not(:disabled) {
+  background: #332219;
+}
+
+.button[data-appearance='destructive'] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 52px;
+  border: 0.8px solid var(--raya-action-destructive);
+  border-radius: 999px;
+  color: var(--raya-action-destructive);
+  background: var(--raya-glass-subtle);
+}
+.button[data-appearance='destructive']:active:not(:disabled) {
+  background: #ff684b22;
+}
+
+.button[data-compact='true'] {
+  inline-size: fit-content;
+  min-inline-size: min(100%, 157px);
+  max-inline-size: 100%;
+  min-block-size: 52px;
+  border-color: #313133;
+  background: #171819;
+  font-size: 12.1px;
+}
+.button[data-compact='true']:active:not(:disabled) {
+  background: #242127;
+}
+
+.exitIcon {
+  inline-size: 18px;
+  block-size: 18px;
+  flex: none;
+}
+
+.button[data-compact='true'] {
+  border-radius: 12px;
+}
+.button[data-appearance='destructive'] {
+  font-size: 14px;
+  background:
+    linear-gradient(rgb(255 104 75 / 5.5%), rgb(255 104 75 / 5.5%)),
+    var(--raya-glass-subtle);
+}
+
+.button[data-appearance='destructive'] { font-weight: 400; }

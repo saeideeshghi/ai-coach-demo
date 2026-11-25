@@ -1,0 +1,272 @@
+.screen {
+  position: relative;
+  box-sizing: border-box;
+  block-size: calc(100cqi * 844 / 390);
+  display: flex;
+  flex-direction: column;
+  padding-block-end: var(--raya-program-nav-clearance);
+  background: #060809;
+  color: #f5f5f7;
+  font-family: var(--raya-font-family);
+}
+
+.content { flex: 1; }
+.homeBackground { position: relative; }
+
+.homeBackground::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  block-size: 314px;
+  background: linear-gradient(180deg, transparent 235px, #060809),
+    linear-gradient(270deg, #080b10b5, #080b1099 58%, #080b1018 88%, transparent),
+    url('../../assets/coach/home-coach-room.webp') center top / cover no-repeat;
+  pointer-events: none;
+}
+
+.hero { position: relative; padding: 59px 40px 0 16px; }
+.tools {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-inline-start: -24px;
+  min-block-size: 34px;
+}
+.profile { display: flex; flex-direction: row-reverse; gap: 16px; align-items: center; }
+.tools button { display: grid; place-items: center; padding: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.avatarButton img { border-radius: 50%; transform: scaleX(-1); }
+.menu { position: absolute; z-index: 2; inset: 100px 15px auto auto; display: grid; inline-size: min(212px, 85%); padding: 6px; border: 1px solid #ffffff24; border-radius: 14px; background: #161719; box-shadow: 0 10px 24px #000b; }
+.menu button { display: flex; justify-content: space-between; align-items: center; gap: 6px; min-block-size: 39px; padding-inline: 8px; border: 0; background: none; color: inherit; font: 600 12px var(--raya-font-family); cursor: pointer; }
+.menu button + button { border-block-start: 1px solid #ffffff1a; }
+
+.hero h1 { margin: 20px 0 0; font: 700 25px / 35px var(--raya-font-family); }
+.hero h1 span { color: #ff914d; }
+.hero p { margin: 7px 0 0; font-size: 12px; line-height: 20px; }
+
+.coach {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-sizing: border-box;
+  inline-size: min(213px, 100%);
+  min-block-size: 45px;
+  justify-content: space-between;
+  margin-block-start: 16px;
+  padding: 0 0 0 10px;
+  border: 0;
+  border-radius: 25px;
+  background: url("../../assets/program/home-coach-button.svg") center / 100% 100% no-repeat;
+  color: #f4eee7;
+  font: 600 12px / 20px var(--raya-font-family);
+  cursor: pointer;
+}
+
+.coachIcon {
+  display: grid;
+  place-items: center;
+  inline-size: 42px;
+  block-size: 42px;
+  flex: none;
+  border: 1px solid #ffb078;
+  border-radius: 50%;
+  background: var(--raya-program-action-fill);
+}
+
+.coachIcon:has(img) { border: 0; background: none; }
+.coachIcon svg { inline-size: 22px; block-size: 22px; }
+.coachLabel { min-inline-size: 0; text-align: center; }
+.coach > svg { flex: none; }
+
+.roadmap {
+  position: relative;
+  box-sizing: border-box;
+  min-block-size: 88px;
+  margin: 15px 16px 0;
+  padding-block: 8px;
+  border: 1px solid #ffffff1a;
+  border-radius: 16px;
+  background: linear-gradient(158deg, #202225ef, #101214ee 60%, #17191bf0);
+}
+
+.roadmap h2 { margin: 0 15px 0 0; font: 400 8.5px / 16px var(--raya-font-family); }
+.roadmap ol {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 0;
+  margin: 14px 0 0;
+  list-style: none;
+}
+
+.roadmap ol::before {
+  content: '';
+  position: absolute;
+  inset: 8px 12.5% auto;
+  block-size: 1px;
+  background: linear-gradient(to left, #ff631a, #414347 21%, #414347);
+}
+
+.roadmap li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  gap: 7px;
+  color: #b0b3b8;
+  text-align: center;
+  font-size: 8px;
+  line-height: 14px;
+}
+
+.marker { display: grid; place-items: center; align-self: center; box-sizing: border-box; inline-size: 8px; block-size: 8px; border: 1px solid #b0b3b8; border-radius: 50%; background: #151719; margin-block: 4px; }
+.roadmap [aria-current] { color: #f5f5f7; }
+.roadmap [aria-current] .marker { inline-size: 16px; block-size: 16px; margin-block: 0; border: 3px solid #ff631a; background: #fff; box-shadow: 0 0 6px #ff631a; }
+.roadmap [aria-current] .marker[data-completed='true'] { background: #ff631a; }
+
+.activities {
+  overflow: hidden;
+  margin: 24px 16px 12px;
+  border: 1px solid #383a40;
+  border-radius: 8px 8px 27px 27px;
+  background: #0e1012;
+}
+.activities h2 { display: flex; align-items: center; gap: 7px; margin: 6px 12px; font: 600 13px / 22px var(--raya-font-family); }
+.activities table { inline-size: 100%; border-collapse: collapse; text-align: start; font-size: 11px; }
+.activities th { padding: 4px 10px; text-align: start; background: #202127; color: #a4a8b2; font-size: 8px; font-weight: 400; }
+.activities td { padding: 9px 10px 15px; }
+.activities td:last-child span { padding: 2px 6px; border-radius: 8px; background: #112923; color: #40d6aa; white-space: nowrap; }
+
+.startActions { inline-size: calc(100% - 64px); display: grid; gap: 6px; margin-block-start: 38px; }
+.startActions button {
+  min-block-size: 52px;
+  border: 0;
+  border-radius: 15px;
+  background: var(--raya-account-action-fill);
+  color: #fff6ec;
+  font: 700 14.5px / 22px var(--raya-font-family);
+  cursor: pointer;
+}
+.startActions button:last-child { min-block-size: 44px; border: 1px solid #ffffff1a; background: #16171980; font: 400 14px / 22px var(--raya-font-family); }
+
+@container (max-width: 355px) {
+  .hero { padding-inline-start: 24px; }
+  .tools { margin-inline-start: -10px; }
+  .startActions { inline-size: calc(100% - 40px); margin-block-start: 24px; }
+}
+
+
+.screen[data-preparing] { background: var(--raya-program-surface); }
+.screen[data-preparing] .coach {
+  position: relative;
+  inset-block-start: 9px;
+  inline-size: min(250px, 100%);
+  justify-content: space-between;
+  background: linear-gradient(180deg, #311a0f, #14110f);
+  font-size: 13.5px;
+}
+.preparingCards { display: grid; gap: 16px; margin: 19px 16px 16px; }
+.preparingCards section {
+  padding: 10px 9px 16px;
+  border: 1px solid #ffffff1a;
+  border-radius: 12px;
+  background: #161719;
+}
+.preparingCards section:first-child {
+  min-block-size: 120px;
+  padding-block-start: 15px;
+  border-color: #654034;
+  background: linear-gradient(180deg, #1d1715, #171719);
+}
+.preparingCards section + section { box-sizing: border-box; min-block-size: 84px; }
+.preparingCards h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+  font: 700 14.2px / 23px var(--raya-font-family);
+}
+.preparingCards h2 img, .preparingCards h2 span { inline-size: 25px; block-size: 25px; }
+.preparingCards h2 span { display: grid; place-items: center; border-radius: 8px; background: #392117; color: #ff7537; }
+.preparingCards strong { display: block; margin: 19px 11px 0; font-size: 16px; }
+.preparingCards p { margin: 6px 11px 0; color: #b4aaa3; font: 400 12.6px / 20px var(--raya-font-family); }
+@container (max-width: 355px) {
+  .screen[data-preparing] .hero { padding-block-start: 51px; }
+  .preparingCards section + section { min-block-size: 70px; }
+  .preparingCards { gap: 10px; margin-block: 9px; }
+  .preparingCards section:first-child { min-block-size: 100px; }
+  .preparingCards strong { margin-block-start: 9px; }
+}
+
+.screen[data-active] { background: var(--raya-program-surface); }
+.screen[data-active] .coach {
+  padding-inline-end: 14px;
+  position: relative;
+  inset-block-start: 9px;
+  inline-size: min(180px, 100%);
+  justify-content: space-between;
+  opacity: 1;
+  background: linear-gradient(180deg, #311a0f, #14110f);
+}
+.screen[data-action-review] .coach { inline-size: min(210px, 100%); }
+.screen:is([data-preparing], [data-active]) .coach {
+  min-block-size: 44px;
+  border: 1px solid #694031;
+  border-radius: 22px;
+  margin-inline-start: -5px;
+}
+.screen:is([data-preparing], [data-active]) .coachIcon { border: 0; }
+.screen[data-active] .roadmap { margin-block-start: 20px; }
+.screen[data-active] .roadmap ol::before { background: linear-gradient(to left, #ff631a 33%, #414347 34%); }
+.roadmap .marker[data-completed='true'] {
+  inline-size: 16px;
+  block-size: 16px;
+  margin-block: 0;
+  border: 0;
+  background: #ff631a;
+}
+.activeCards { display: grid; gap: 12px; margin: 12px 16px 16px; }
+.activeCards section { padding: 9px 14px 12px; border: 1px solid #ffffff1a; border-radius: 12px; background: #161719; }
+.activeCards header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.activeCards h2 { margin: 0; font: 700 14px / 23px var(--raya-font-family); }
+.activeCards header h2 { display: flex; align-items: center; gap: 7px; }
+.activeCards section:first-child h2 { color: #ffa16a; font-size: 11px; }
+.activeCards header svg { color: #ff7537; }
+.activeCards header button { padding: 0; border: 0; background: none; color: #ffa16a; font: 600 11px / 22px var(--raya-font-family); }
+.activeCards strong { display: block; font-size: 18px; }
+.activeCards small, .activeCards p { margin: 2px 0 0; color: #b4aaa3; font: 400 11px / 20px var(--raya-font-family); }
+.activeCards ul { list-style: none; padding: 0; margin: 8px 0 0; }
+.activeCards li {
+  display: flex;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 6px 0;
+  border-block-start: 1px solid #28292c;
+  font: 400 12px / 24px var(--raya-font-family);
+}
+.activeCards li span {
+  align-self: center;
+  min-inline-size: 70px;
+  border-radius: 6px;
+  padding-inline: 5px;
+  color: #65d8ad;
+  background: #182b25;
+  text-align: center;
+  white-space: nowrap;
+}
+.activeCards li:nth-child(3) span { color: #ffa16a; background: #392117; }
+.activeCards li:nth-child(4) span { color: #b4aaa3; background: #222327; }
+
+@container (max-width: 355px) {
+  .screen[data-active] .hero { padding-block-start: 41px; }
+  .screen[data-active] .roadmap { margin-block-start: 16px; }
+  .screen[data-active] .hero h1 { margin-block-start: 16px; line-height: 32px; }
+  .activeCards { gap: 8px; margin: 8px 12px 8px; }
+  .activeCards li { padding-block: 3px; line-height: 20px; }
+}
+
+.roadmap[data-finished] ol::before { background: linear-gradient(to left,#ff641f,#69d6ad); }
+.roadmap[data-finished] .marker[data-completed='true'] { background: #54bf97; }
+.activeCards .completedBanner { padding-block: 13px 15px; border-color: #3a5549; background: linear-gradient(#2d594a,#13221f); }
+.activeCards .completedBanner h2 { display: flex; align-items: center; gap: 8px; color: #f4eee7; font-size: 14px; }
+.activeCards .completedBanner h2 svg { flex: none; }
+.activeCards .completedBanner p { margin-block-start: 7px; }

@@ -1,0 +1,206 @@
+.screen {
+  --frame-unit: calc(100cqi / 390);
+  --raya-account-border: #4f4f4f;
+  --raya-account-fill: linear-gradient(180deg, rgb(33 33 33 / 55%), rgb(15 17 18 / 45%));
+  --raya-field-error: #ff9786;
+  --raya-control-focus: #ff9a65;
+  --raya-account-muted: #9c9c9c;
+  --raya-account-accent: #ff6818;
+
+  position: relative;
+  box-sizing: border-box;
+  min-block-size: calc(844 * var(--frame-unit));
+  padding: calc(145 * var(--frame-unit)) clamp(16px, 5.54cqi, 25px) 36px;
+  background: #0e0f0f;
+  color: #f2f2f2;
+  font-family: var(--raya-font-family);
+}
+
+.back {
+  position: absolute;
+  inset-block-start: calc(61 * var(--frame-unit));
+  inset-inline-start: clamp(9px, 2.56cqi, 14px);
+  display: grid;
+  place-items: center;
+  inline-size: 44px;
+  block-size: 44px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 46px;
+}
+
+.header h1:focus {
+  outline: none;
+}
+
+.header p {
+  margin: 8px 0 0;
+  color: var(--raya-account-muted);
+  font-size: 15.955px;
+  line-height: 32px;
+}
+
+.form {
+  margin-block-start: 21.35px;
+}
+
+.fields,
+.names,
+.providers {
+  display: grid;
+  gap: 8.64px;
+}
+
+.names,
+.providers {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7.8px;
+}
+
+.hint,
+.error {
+  font-size: 11.523px;
+  line-height: 17px;
+}
+
+.hint {
+  margin: 8px 10px 0;
+  color: var(--raya-account-muted);
+}
+
+.terms {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-block-size: 45.56px;
+  gap: 8px;
+  margin-block-start: 13px;
+  padding: 5px 11px;
+  border: 1px solid #383838;
+  border-radius: 10.4px;
+  background: var(--raya-account-fill);
+  font-size: 11.523px;
+  cursor: pointer;
+}
+
+.terms input {
+  appearance: none;
+  flex: none;
+  inline-size: 17.73px;
+  block-size: 17.73px;
+  margin: 0;
+  border: 1px solid #767676;
+  border-radius: 3.55px;
+  cursor: inherit;
+}
+
+.terms input:checked {
+  border-color: var(--raya-account-accent);
+  background: var(--raya-account-accent) url('../../assets/account/check.svg') center / 12px 10px no-repeat;
+}
+
+.highlight,
+.signin button {
+  color: var(--raya-account-accent);
+}
+
+.error {
+  margin: 5px 8px 0;
+  color: var(--raya-field-error);
+}
+
+.submit {
+  display: block;
+  inline-size: calc(100% - 3.8px);
+  min-block-size: 52px;
+  margin: 23.2px auto 0;
+  border: 0;
+  border-radius: 15px;
+  background: var(--raya-account-action-fill);
+  box-shadow: var(--raya-account-action-shadow);
+  color: #fff;
+  font: 700 14.5px / 1.5 var(--raya-font-family);
+  cursor: pointer;
+}
+
+.back:focus-visible,
+.terms input:focus-visible,
+.submit:focus-visible {
+  outline: 2px solid var(--raya-control-focus);
+  outline-offset: 3px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-block-start: 16px;
+  font-size: 15.068px;
+  line-height: 23px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  block-size: 0.5px;
+  background: #575757;
+}
+
+.providers {
+  margin-block-start: 16px;
+}
+
+.providers button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(8px, 4.6cqi, 18px);
+  min-inline-size: 0;
+  min-block-size: 51.4px;
+  padding: 0 4px;
+  border: 1px solid var(--raya-account-border);
+  border-radius: 15.95px;
+  background: var(--raya-account-fill);
+  color: #f2f2f2;
+  font: 400 15.068px / 1.5 var(--raya-font-family);
+  opacity: 1;
+}
+
+.signin {
+  margin: 22px 0 0;
+  color: var(--raya-account-muted);
+  font-size: 15.068px;
+}
+
+.signin button {
+  border: 0;
+  background: none;
+  font: inherit;
+  opacity: 1;
+}
+
+
+@container (max-width: 355px) {
+  .screen { --raya-field-font: 14px; padding-block: 94px 22px; }
+  .back { inset-block-start: 42px; }
+  .header h1 { line-height: 38px; }
+  .header p { font-size: 14px; line-height: 24px; }
+  .form { margin-block-start: 15px; }
+  .terms { margin-block-start: 10px; }
+  .submit { margin-block-start: 14px; }
+  .divider, .providers { margin-block-start: 10px; }
+  .providers button { min-block-size: 46px; }
+  .signin { margin-block-start: 15px; font-size: 14px; }
+}

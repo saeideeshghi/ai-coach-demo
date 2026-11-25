@@ -1,0 +1,27 @@
+@font-face {
+  font-family: Kahroba;
+  src: url('./Kahroba-FD.woff2') format('woff2');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kahroba;
+  src: url('./Kahroba-FD-SB.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kahroba;
+  src: url('./Kahroba-FD-B.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Kahroba;
+  src: url('./Kahroba-FD-M.woff2') format('woff2');
+  font-weight: 500;
+  font-display: swap;
+}

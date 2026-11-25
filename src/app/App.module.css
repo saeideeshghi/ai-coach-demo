@@ -1,0 +1,45 @@
+.app {
+  --raya-splash-surface: #111;
+  --raya-splash-text: #f2eeee;
+  --raya-splash-accent: #ff641b;
+  --raya-splash-glow: #ff9b65;
+  --raya-splash-track: #5c5758;
+
+  min-block-size: 100svh;
+  display: grid;
+  place-items: center;
+  background: var(--raya-splash-surface);
+}
+
+.stage {
+  inline-size: min(100%, 390px);
+}
+
+@media (min-width: 600px) {
+  .stage {
+    max-inline-size: calc((100svh - 48px) * 390 / 844);
+  }
+}
+
+
+@media (display-mode: standalone) {
+  .app {
+    box-sizing: border-box;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+
+  .stage {
+    inline-size: min(100%, 480px);
+    max-inline-size: none;
+  }
+}
+
+.coachLoading {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 390 / 844;
+  margin: 0;
+  color: #f4eee7;
+  font: 400 14px / 1.5 var(--raya-font-family);
+}

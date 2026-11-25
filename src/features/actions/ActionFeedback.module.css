@@ -1,0 +1,53 @@
+.heading { text-align: center; }
+.heading header { min-block-size: 145px; }
+.heading header h1 { font-size: 21px; line-height: 31px; }
+
+.cards { display: grid; gap: 12px; margin: 0 16px 13px; }
+.cards > :is(section, form) {
+  padding: 9px 13px;
+  border: 1px solid #ffffff1a;
+  border-radius: 13px;
+  background: #161719;
+}
+.cards header, .cards h2 { display: flex; align-items: center; }
+.cards header { justify-content: space-between; gap: 7px; color: #b4aaa3; }
+.cards h2 { gap: 7px; color: #f4eee7; font-size: 14px; }
+.cards img { inline-size: 24px; block-size: 24px; }
+.cards p { margin-block-start: 5px; font-size: 12px; line-height: 20px; }
+.cards ul { margin: 7px 0 0; padding: 0; list-style: none; }
+.cards li label { display: flex; align-items: center; gap: 8px; min-block-size: 23px; color: #b4aaa3; }
+.cards li input { margin-inline: 1px; accent-color: #ff641f; }
+
+.form { display: grid; gap: 8px; }
+.field, .file {
+  display: grid;
+  padding: 7px 10px;
+  border: 1px solid #ffffff1a;
+  border-radius: 9px;
+  background: #121315;
+}
+.field:focus-within, .file:focus-within { border-color: #b8582a; }
+.field textarea { box-sizing: border-box; inline-size: 100%; min-block-size: 46px; padding: 3px 0; border: 0; outline: none; color: #f4eee7; background: transparent; resize: vertical; font: 400 12px / 20px var(--raya-font-family); }
+.field small { justify-self: end; color: #b4aaa3; }
+.file { position: relative; grid-template-columns: 24px minmax(0, 1fr) auto; align-items: center; gap: 6px; cursor: pointer; }
+.file span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.file span:last-of-type { color: #ffa16a; }
+.file input { position: absolute; inset: 0; inline-size: 100%; opacity: 0; cursor: pointer; }
+.submitBar {
+  display: grid;
+  flex: none;
+  margin: 0 16px 8px;
+  padding: 2px 13px 9px;
+  border: 1px solid #ffffff1a;
+  border-block-start: 0;
+  border-radius: 0 0 13px 13px;
+  background: #161719;
+}
+.submitBar button:disabled { opacity: .58; cursor: default; }
+@container (max-width: 355px) {
+  .heading header { min-block-size: 114px; }
+  .heading header h1 { font-size: 18px; line-height: 26px; }
+  .cards { margin-inline: 12px; gap: 8px; }
+  .cards > :is(section, form) { padding: 7px 10px; }
+  .submitBar { margin-inline: 12px; padding-inline: 10px; }
+}

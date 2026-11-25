@@ -1,0 +1,69 @@
+.actions { inline-size: calc(100% - 64px); display: grid; gap: 8px; margin-block-start: auto; }
+.actions button {
+  position: relative;
+  min-block-size: 52px;
+  padding-inline: 25px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--raya-program-action-fill);
+  color: #fff6ec;
+  font: 700 14px / 22px var(--raya-font-family);
+  cursor: pointer;
+}
+.actions button + button { min-block-size: 44px; border: 1px solid #ffffff1a; background: #16171930; }
+.actions svg { position: absolute; left: 15px; top: calc(50% - 6px); }
+
+.gatewayBadge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  inline-size: 68px;
+  block-size: 68px;
+  border-radius: 50%;
+  background: var(--raya-program-action-fill);
+}
+.gatewayBadge i { inline-size: 7px; block-size: 7px; border-radius: 50%; background: #fff6ec; }
+.wait { margin-block: auto 17px; color: #b4aaa3; font: 400 12px / 20px var(--raya-font-family); }
+.gatewayLine {
+  display: block;
+  inline-size: 40px;
+  block-size: 2px;
+  margin: 0 auto 20px;
+  border-radius: 2px;
+  background: var(--raya-program-action-fill);
+}
+.verificationDots { display: flex; direction: ltr; justify-content: center; gap: 12px; margin-block-end: 20px; }
+.verificationDots i { inline-size: 6px; block-size: 6px; border-radius: 50%; background: #a69a93; }
+.verificationDots i:first-child { background: #ff641f; }
+
+.receiptHeader { text-align: center; }
+.receiptHeader h1 { margin: 0; font: 700 23px / 36px var(--raya-font-family); }
+.receiptHeader h1:focus { outline: none; }
+.receiptHeader p { margin: 1px 0 0; color: #b4aaa3; font: 400 12.6px / 22px var(--raya-font-family); }
+.success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  min-block-size: 109px;
+  margin-block-start: 25px;
+  border: 1px solid #375043;
+  border-radius: 13px;
+  background: linear-gradient(180deg, rgb(99 214 162 / 44%), #121315);
+}
+
+.success h2, .card h2 { margin: 0; font: 700 14px / 24px var(--raya-font-family); }
+.card { margin-block-start: 16px; padding: 8px 13px 10px; border: 1px solid #ffffff1a; border-radius: 13px; background: #161719; }
+.card h2 { display: flex; align-items: center; gap: 9px; margin-inline: 8px; }
+.receiptIcon { display: grid; place-items: center; inline-size: 25px; block-size: 25px; border-radius: 8px; color: #ff7537; background: #392117; }
+.card dl { display: flex; justify-content: space-between; margin: 12px 4px 0; font: 500 12.5px / 24px var(--raya-font-family); }
+.card dd { margin: 0; color: #ffa16a; }
+.card ul { list-style: none; padding: 0; margin: 8px 0 0; }
+.card li { padding: 6.5px 6px; border-block-start: 1px solid #28292c; font: 500 12.5px / 23px var(--raya-font-family); }
+@container (max-width: 355px) {
+  .success { min-block-size: 83px; gap: 20px; }
+  .card { margin-block-start: 11px; }
+  .card li { padding-block: 4px; line-height: 20px; }
+  .actions { inline-size: calc(100% - 40px); }
+}

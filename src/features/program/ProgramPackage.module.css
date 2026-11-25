@@ -1,0 +1,95 @@
+.screen {
+  position: relative;
+  box-sizing: border-box;
+  min-block-size: calc(100cqi * 844 / 390);
+  display: flex;
+  flex-direction: column;
+  padding: 43px 16px 42px;
+  background: radial-gradient(ellipse 250px 118.75px at calc(100% + 35px) 4.75px, #3d201b, var(--raya-program-surface));
+  color: #f4eee7;
+  font-family: var(--raya-font-family);
+}
+
+.screen::after { content: ''; position: absolute; inset: auto 0 14px; margin-inline: auto; inline-size: 114px; block-size: 4px; background: #474545; border-radius: 2px; pointer-events: none; }
+.back { align-self: start; display: grid; place-items: center; inline-size: 32px; block-size: 27px; padding: 0; border: 0; color: inherit; background: transparent; cursor: pointer; }
+.back svg { inline-size: 16px; block-size: 16px; }
+.header { margin-inline: 8px; }
+.header h1 { margin: 0; font: 700 23px / 36px var(--raya-font-family); }
+.header h1:focus { outline: none; }
+.header p { margin: 1px 0 0; color: #b4aaa3; font: 400 12.6px / 22px var(--raya-font-family); }
+
+.systems, .amount {
+  border-radius: 14px;
+  border: 1px solid #70412d;
+  background: #161719;
+}
+
+.systems { margin-block-start: 21px; padding: 23px 15px 0; }
+.systems h2 { margin: 0 7px 0 0; font: 700 20px / 35px var(--raya-font-family); }
+.caption { display: flex; justify-content: space-between; margin: 3px 4px 7px 0; color: #b4aaa3; font: 400 12px / 22px var(--raya-font-family); }
+.caption span:last-child { font-size: 10px; }
+.systems ol, .systems ul { list-style: none; margin: 0; padding: 0; }
+.systems li { display: flex; align-items: center; justify-content: space-between; gap: 8px; box-sizing: border-box; min-block-size: 39px; padding-inline: 7px; border-block-start: 1px solid #28292c; font: 500 12.5px / 21px var(--raya-font-family); }
+.systems ol li > span:last-child { color: #a69a93; }
+
+.details {
+  position: relative;
+  inline-size: 100%;
+  min-block-size: 49px;
+  padding: 3px 7px 3px 20px;
+  border: 0;
+  border-block-start: 1px solid #28292c;
+  text-align: start;
+  background: transparent;
+  color: #ffa16a;
+  font: 700 13.4px / 22px var(--raya-font-family);
+  cursor: pointer;
+}
+
+.amount { display: flex; align-items: center; justify-content: space-between; padding: 11px 18px; margin-block-start: 26px; min-block-size: 58px; border-color: #ffffff1a; }
+.amount h2 { margin: 0; font: 700 16px / 25px var(--raya-font-family); }
+.amount p { margin: 2px 0 0; color: #b4aaa3; font-size: 12.5px; }
+.amount strong { color: #ffa16a; font-size: 15px; }
+
+.contents { border-color: #ffffff1a; padding: 7px 12px; }
+.contents h2 { font-size: 15px; margin-block-end: 4px; }
+.contents li { min-block-size: 65.6px; font-weight: 700; font-size: 13.5px; }
+.contents small { display: grid; justify-items: start; align-items: center; min-block-size: 18px; color: #ff631a; }
+.contents small svg { display: block; max-inline-size: 100%; }
+.count { flex: none; padding: 2px 7px; border-radius: 8px; color: #b4aaa3; background: #222327; font: 400 10.5px / 18px var(--raya-font-family); }
+
+.footer { margin-block-start: auto; padding-block-start: 27px; }
+.footer p { margin: 0 18px 6px; color: #a69a93; font: 400 11px / 18px var(--raya-font-family); }
+.footer button { position: relative; inline-size: 100%; min-block-size: 52px; border: 0; border-radius: 12px; background: var(--raya-program-action-fill); color: #fff6ec; font: 700 15px / 24px var(--raya-font-family); cursor: pointer; }
+.screen[data-contents] .footer button { background: var(--raya-details-action-fill); }
+.footer button:disabled { cursor: default; opacity: 1; }
+.footer button svg, .details svg { position: absolute; left: 15px; inset-block-start: calc(50% - 6px); }
+
+@media (display-mode: standalone) { .screen::after { display: none; } }
+
+@container (max-width: 355px) {
+  .screen { padding: 31px 12px 30px; }
+  .systems { margin-block-start: 12px; padding-inline: 9px; }
+  .systems li { min-block-size: 30px; }
+  .contents li { min-block-size: 51px; }
+  .contents small svg { max-block-size: 16px; }
+  .amount { margin-block-start: 12px; padding-block: 8px; }
+  .footer { padding-block-start: 15px; }
+}
+
+
+.systemLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  align-self: stretch;
+  inline-size: 100%;
+  padding: 4px 0;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  text-align: start;
+  font: inherit;
+  cursor: pointer;
+}

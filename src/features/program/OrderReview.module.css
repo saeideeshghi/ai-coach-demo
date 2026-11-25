@@ -1,0 +1,23 @@
+.step { display: flex; align-items: center; justify-content: space-between; color: #b4aaa3; font-size: 11px; }
+.bars { display: flex; gap: 7px; }
+.bars i { width: 25px; height: 2px; border-radius: 2px; background: #654034; }
+.bars i:first-child { background: #ff641f; }
+.heading { margin: 12px 8px 18px; }
+.heading h1 { margin: 0; font: 700 22px / 34px var(--raya-font-family); }
+.heading h1:focus { outline: none; }
+.heading p, .card p, .package p, .method p { margin: 0; color: #b4aaa3; font: 400 12.6px / 22px var(--raya-font-family); }
+.card, .package, .method > div { padding: 12px 14px; border: 1px solid #ffffff1a; border-radius: 12px; background: #161719; }
+.package { padding-block: 16px; border-color: #654034; background: linear-gradient(180deg, #1d1715, #171719); }
+.package strong { display: block; margin-block: 7px; font-size: 17px; }
+.card h2, .package h2, .method h2 { margin: 0; font: 700 14px / 24px var(--raya-font-family); }
+.package h2, .costs dd { color: #ffa16a; }
+.card, .method { margin-block-start: 16px; }
+.method > div { margin-block-start: 6px; border-color: #654034; font-size: 13px; }
+.costs { margin: 4px 0 0; }
+.costs div { display: flex; justify-content: space-between; gap: 12px; padding-block: 6px; font-size: 13px; }
+.costs div + div { border-block-start: 1px solid #28292c; }
+.costs dd { margin: 0; }
+@container (max-width: 355px) {
+  .heading { margin-block-start: 7px; margin-block-end: 12px; }
+  .card, .method { margin-block-start: 12px; }
+}

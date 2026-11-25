@@ -1,0 +1,22 @@
+.field {
+  display: grid;
+  gap: 8px;
+  color: var(--raya-field-placeholder);
+  font-size: 12px;
+  margin-block: 4px;
+}
+.field input {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  inline-size: 100%;
+  min-block-size: 44px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: #242328;
+  color: var(--raya-text-primary);
+  padding-inline: 12px;
+  font: inherit;
+}
+.field input[dir='ltr'] {
+  text-align: end;
+}

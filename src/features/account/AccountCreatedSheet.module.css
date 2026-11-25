@@ -1,0 +1,112 @@
+.overlay {
+  --sheet-scrim: rgb(33 33 33 / 79%);
+  --sheet-blur: 16px;
+  color: #f4eee7;
+  font-family: var(--raya-font-family);
+}
+
+.sheet {
+  box-sizing: border-box;
+  min-inline-size: 0;
+  display: grid;
+  justify-items: center;
+  padding: 13px clamp(18px, 8.205cqi, 32px) 41px;
+  border-radius: 28px 28px 0 0;
+  background:
+    radial-gradient(ellipse 66% 33% at 50% 35%, rgb(190 115 67 / 12%), transparent 95%),
+    linear-gradient(160deg, rgb(9 9 10 / 18%), rgb(11 12 14 / 37%));
+  text-align: center;
+}
+
+.sheet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-block-start: 1px solid rgb(244 238 231 / 28%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.handle {
+  inline-size: 50px;
+  block-size: 4px;
+  border-radius: 10px;
+  background: rgb(56 56 56 / 40%);
+}
+
+.badge {
+  display: block;
+  margin-block-start: 32px;
+}
+
+.title {
+  position: relative;
+  inset-inline-start: 5px;
+  inset-block-start: 5px;
+  margin: 27px 0 0;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+.title:focus {
+  outline: none;
+}
+
+.copy {
+  position: relative;
+  inset-inline-start: 4px;
+  inset-block-start: 3px;
+  color: rgb(244 238 231 / 90%);
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.action {
+  box-sizing: border-box;
+  inline-size: 100%;
+  min-block-size: 52px;
+  margin-block-start: 38px;
+  padding: 2px 8px 0;
+  border: 0;
+  border-radius: 15px;
+  background: var(--raya-account-action-fill);
+  box-shadow: var(--raya-account-action-shadow);
+  color: #fff;
+  cursor: pointer;
+  font: 600 14.5px / 1.5 var(--raya-font-family);
+}
+
+.visuallyHidden {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@container (max-width: 375px) {
+  .sheet {
+    padding-block-end: 30px;
+  }
+
+  .badge,
+  .title {
+    margin-block-start: 22px;
+  }
+
+  .action {
+    margin-block-start: 26px;
+  }
+
+  .referenceBreak {
+    display: none;
+  }
+}
+
+.action:focus-visible {
+  outline: 2px solid #ff9a65;
+  outline-offset: 3px;
+}

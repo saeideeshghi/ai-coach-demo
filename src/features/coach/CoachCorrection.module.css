@@ -1,0 +1,71 @@
+.form { inline-size: 100%; margin-block-start: 18px; }
+
+.field {
+  display: grid;
+  gap: 7px;
+  margin-inline: 22px;
+  padding: 7px 18px 10px;
+  min-block-size: 148px;
+  box-sizing: border-box;
+  border: 1px solid #ffffff1a;
+  border-radius: 10px;
+  background: #141518;
+  text-align: start;
+}
+
+.field label { font: 600 13.5px / 23px var(--raya-font-family); }
+.field textarea {
+  inline-size: 100%;
+  min-inline-size: 0;
+  min-block-size: 92px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  resize: none;
+  background: transparent;
+  color: inherit;
+  font: 400 12.6px / 21px var(--raya-font-family);
+}
+
+.field:focus-within { border-color: #b8582a; }
+.field textarea::placeholder { color: #a69a93; opacity: .84; }
+.error { margin: 4px 32px 0; color: #ffb19b; font-size: 12px; text-align: start; }
+
+.actions, .saved {
+  display: grid;
+  margin: 10px 32px 0;
+  gap: 12px;
+}
+
+.actions { grid-template-columns: minmax(0, 172fr) minmax(0, 142fr); }
+.saved { inline-size: calc(100% - 64px); margin-block-start: 34px; gap: 8px; }
+
+.actions button, .saved button {
+  position: relative;
+  min-block-size: 52px;
+  padding: 4px 27px 4px 7px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--raya-program-action-fill);
+  color: #fff6ec;
+  font: 600 14px / 22px var(--raya-font-family);
+  cursor: pointer;
+}
+
+.actions button:last-child, .saved button:last-child {
+  padding: 4px 7px;
+  border: 1px solid #ffffff1a;
+  background: #161719;
+  color: #f4eee7;
+}
+
+.actions button { font-size: 12.6px; }
+.saved button:last-child { min-block-size: 44px; background: #16171966; }
+.actions button svg, .saved button svg { position: absolute; left: 15px; top: calc(50% - 6px); }
+
+@container (max-width: 355px) {
+  .field { margin-inline: 16px; }
+  .actions { margin-inline: 20px; }
+  .saved { inline-size: calc(100% - 40px); margin-block-start: 23px; }
+}
+
