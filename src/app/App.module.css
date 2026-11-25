@@ -5,9 +5,10 @@
   --raya-splash-glow: #ff9b65;
   --raya-splash-track: #5c5758;
 
-  block-size: 100vh;
-  block-size: 100dvh;
-  block-size: var(--raya-app-height, 100dvh);
+  --raya-app-height: 100vh;
+
+  min-block-size: 100vh;
+  min-block-size: 100dvh;
   overflow: clip;
   box-sizing: border-box;
   padding: env(safe-area-inset-top) env(safe-area-inset-right)
@@ -48,6 +49,20 @@
 
   .desktopNotice {
     display: block;
+  }
+}
+
+@supports (height: 100dvh) {
+  .app { --raya-app-height: 100dvh; }
+}
+
+@media not all and (min-width: 600px) {
+  .app {
+    position: fixed;
+    inset-inline: 0;
+    inset-block-start: var(--raya-app-offset-top, 0px);
+    min-block-size: 0;
+    block-size: var(--raya-app-height);
   }
 }
 

@@ -43,15 +43,22 @@ try {
   const embedded = await browser.newPage({ viewport: { width: 390, height: 740 }, reducedMotion: 'reduce' })
   await embedded.addInitScript(() => {
     Object.defineProperty(window.visualViewport, 'height', { configurable: true, value: 680 })
+    Object.defineProperty(window.visualViewport, 'offsetTop', { configurable: true, value: 24 })
   })
   await embedded.goto(origin + '/home')
   const embeddedApp = embedded.locator('main').first()
   assert.equal((await embeddedApp.boundingBox()).height, 680)
+  assert.equal((await embeddedApp.boundingBox()).y, 24)
   await embedded.evaluate(() => {
     Object.defineProperty(window.visualViewport, 'height', { value: 712 })
     window.visualViewport.dispatchEvent(new Event('resize'))
   })
   assert.equal((await embeddedApp.boundingBox()).height, 712)
+  await embedded.evaluate(() => {
+    Object.defineProperty(window.visualViewport, 'offsetTop', { value: 0 })
+    window.visualViewport.dispatchEvent(new Event('scroll'))
+  })
+  assert.equal((await embeddedApp.boundingBox()).y, 0)
   await embedded.close()
 
   const bottomControls = await browser.newPage({ viewport: { width: 390, height: 740 }, reducedMotion: 'reduce' })
@@ -103,6 +110,19 @@ try {
     await page.goto(origin)
     const splash = page.getByRole('region', { name: 'شروع Ai Coach' })
     await splash.waitFor()
+    const cornerOpacity = await splash.evaluate(async element => {
+      const art = new Image()
+      art.src = getComputedStyle(element).backgroundImage.slice(5, -2)
+      await art.decode()
+      const canvas = document.createElement('canvas')
+      canvas.width = element.clientWidth
+      canvas.height = element.clientHeight
+      const context = canvas.getContext('2d')
+      context.drawImage(art, 0, 0, canvas.width, canvas.height)
+      return [[0, 0], [canvas.width - 1, 0], [0, canvas.height - 1],
+        [canvas.width - 1, canvas.height - 1]].map(([x, y]) => context.getImageData(x, y, 1, 1).data[3])
+    })
+    assert.deepEqual(cornerOpacity, [255, 255, 255, 255], 'splash art covers the viewport corners')
     const openingFrame = page.locator('[data-variant=opening]')
     assert.equal(await openingFrame.evaluate(frame => getComputedStyle(frame).borderRadius), '0px')
     assert.equal(await openingFrame.locator(':scope > img').count(), 0)

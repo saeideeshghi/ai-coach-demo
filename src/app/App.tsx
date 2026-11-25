@@ -30,12 +30,12 @@ import { demoAuth } from '../fixtures/auth'
 import { PhonePreview } from './PhonePreview/PhonePreview'
 import { actionAddress, appPathname, coachAddress, courseAddress, industryAddress, navigationOrigin, onboardingAddress, orderAddress, pathOf, paths, profileAddress, systemAddress, useAppNavigation } from './navigation'
 import styles from './App.module.css'
-import { useViewportHeight } from './useViewportHeight'
+import { useMobileViewport } from './useMobileViewport'
 
 const DemoCoachRoute = lazy(() => import('../features/coach/DemoCoachRoute'))
 
 export function App() {
-  const appRef = useViewportHeight()
+  const appRef = useMobileViewport()
   const { route, navigate, backTo } = useAppNavigation()
   const routeFade = useRef<ViewTransition | null>(null)
   const [, refreshProgram] = useReducer((revision: number) => revision + 1, 0)
