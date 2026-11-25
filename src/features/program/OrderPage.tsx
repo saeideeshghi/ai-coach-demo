@@ -2,11 +2,10 @@ import { useEffect, useRef, useState } from 'react'
 import { ProgramChevron } from '../../components/ProgramChevron'
 import { ProgramSheet } from '../../components/ProgramSheet/ProgramSheet'
 import { demoSystems } from '../../fixtures/program'
-import type { CheckoutService, OrderView, PaymentStatus } from './checkout'
+import type { CheckoutService, OrderView } from './checkout'
 import { OrderReview } from './OrderReview'
 import warning from './payment-incomplete.svg'
 import paid from './payment-paid.svg'
-import preparing from './payment-preparing.svg'
 import clock from './payment-verifying.svg'
 import shell from './ProgramPackage.module.css'
 import styles from './OrderPage.module.css'
@@ -17,7 +16,6 @@ const copy = {
   paid: { badge: paid, title: 'پرداخت با موفقیت انجام شد', description: 'سفارش بستهٔ جامع هفت سیستم ثبت شد. برنامهٔ اختصاصی شما در حال آماده‌سازی است.' },
   incomplete: { badge: warning, title: 'پرداخت کامل نشد', description: 'پرداخت این سفارش به پایان نرسید. برای ادامه می‌توانید دوباره تلاش کنید.' },
   unknown: { badge: clock, title: 'نتیجهٔ پرداخت هنوز مشخص نیست', description: 'وضعیت سفارش از درگاه استعلام می‌شود. تا اعلام نتیجه، پرداخت را تکرار نکنید.' },
-  preparing: { badge: preparing, title: 'برنامه در حال آماده‌سازی است', description: 'برنامهٔ هفت سیستم بر اساس جمع‌بندی جلسهٔ شما در حال آماده‌سازی است.' },
 } as const
 
 export function OrderPage({ orderId, view, service, onView, onHome, onReview }: {
@@ -38,6 +36,13 @@ export function OrderPage({ orderId, view, service, onView, onHome, onReview }: 
     return () => window.clearTimeout(timer)
   }, [orderId, service, status])
 
+  useEffect(() => {
+    if (status === 'paid' && view === 'preparing' && !handoff.current) {
+      handoff.current = true
+      onHome(true)
+    }
+  }, [status, view, onHome])
+
   if (!status) {
     return <section className={shell.screen}>
       <h1>سفارش</h1>
@@ -47,10 +52,10 @@ export function OrderPage({ orderId, view, service, onView, onHome, onReview }: 
   }
 
   if (status === 'paid' && view === 'receipt') {
-    return <OrderReceipt onHome={() => onView('preparing')} onBack={() => onView('status')} />
+    return <OrderReceipt onHome={() => onHome(true)} onBack={() => onView('status')} />
   }
 
-  const sheet: PaymentStatus | 'preparing' = status === 'paid' && view === 'preparing' ? 'preparing' : status
+  const sheet = status
   const waiting = sheet === 'redirecting' || sheet === 'verifying'
   const { badge, title, description } = copy[sheet]
   const goToPreparingHome = () => {
@@ -63,7 +68,7 @@ export function OrderPage({ orderId, view, service, onView, onHome, onReview }: 
     <>
       <OrderReview covered onBack={onReview} onPay={onReview} />
       <ProgramSheet badge={badge} variant={sheet} billing
-        entrance={waiting ? 'fade' : 'slide'} onClose={sheet === 'preparing' ? goToPreparingHome : onReview}
+        entrance={waiting ? 'fade' : 'slide'} onClose={onReview}
         title={title} description={description}>
         {exit => waiting ? (
           <div className={styles.wait} role="status">
@@ -78,7 +83,6 @@ export function OrderPage({ orderId, view, service, onView, onHome, onReview }: 
               <button type="button" onClick={goToPreparingHome}><ProgramChevron />بازگشت به خانه</button>
               <button type="button" onClick={() => exit(() => onView('receipt'))}>مشاهدهٔ خلاصهٔ سفارش</button>
             </>}
-            {sheet === 'preparing' && <button type="button" onClick={goToPreparingHome}><ProgramChevron />بازگشت به خانه</button>}
             {sheet === 'incomplete' && <>
               <button type="button" onClick={() => setOrder(service.retry(orderId))}><ProgramChevron />تلاش دوباره</button>
               <button type="button" onClick={() => exit(onReview)}>بازگشت به سفارش</button>

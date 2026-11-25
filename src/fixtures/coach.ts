@@ -54,7 +54,7 @@ export const demoCoachService: CoachService = {
       const timer = window.setTimeout(() => {
         signal.removeEventListener('abort', stop)
         resolve()
-      }, 700)
+      }, 1200)
       signal.addEventListener('abort', stop, { once: true })
     })
 

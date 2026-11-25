@@ -33,7 +33,7 @@ export function CoachChat({ messages, draft, pending, error, onDraft, onSend, on
   return (
     <section className={styles.chat} aria-labelledby="coach-chat-title">
       <h2 className={styles.srOnly} id="coach-chat-title" tabIndex={-1} ref={title}>گفت‌وگو با کوچ</h2>
-      <ScrollArea className={styles.log} viewportClassName={styles.logView} contentClassName={styles.logContents} role="log" aria-label="پیام‌های جلسه" ref={log}
+      <ScrollArea className={styles.log} viewportClassName={styles.logView} contentClassName={styles.logContents} role="log" tabIndex={0} aria-label="پیام‌های جلسه" ref={log}
         onScroll={(event) => {
           const list = event.currentTarget
           followLatest.current = list.scrollHeight - list.scrollTop - list.clientHeight < 28

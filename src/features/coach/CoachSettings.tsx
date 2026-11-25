@@ -82,7 +82,7 @@ export function CoachSettings({ preferences, defaults, voices, onClose, onSave }
 
   return (
     <div className={styles.overlay + ' ' + motion.overlay} data-preset="audio" data-motion={closing ? 'closing' : undefined}>
-      <div ref={backdrop} className={motion.backdrop} aria-hidden="true" />
+      <div ref={backdrop} className={motion.backdrop} aria-hidden="true" onClick={() => { if (!saving && !closing) dismiss() }} />
       <section ref={panel} inert={closing} role="dialog" aria-modal="true" aria-labelledby={titleId}
         className={styles.sheet + ' ' + motion.panel}
         onKeyDown={(event) => {

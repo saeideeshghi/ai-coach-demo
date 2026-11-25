@@ -197,7 +197,10 @@ function CoachRoom({ session, service, onExit, onSummary }: {
         media={session.media}
         showChatPoster={view === 'chat' && playback === 'ready'}
         onPosition={setPosition}
-        onPlayback={(state) => setPlayback(previous => previous === 'error' && state === 'paused' ? previous : state)}
+        onPlayback={(state) => {
+          setPlayback(previous => previous === 'error' && state === 'paused' ? previous : state)
+          if (state === 'finished') void end()
+        }}
       />
       <div className={styles.content} inert={settings || ended}
         onKeyDown={(event) => {

@@ -9,7 +9,7 @@
   flex-direction: column;
   box-sizing: border-box;
   min-block-size: 100%;
-  padding: 0 clamp(20px, 8.205cqi, 32px) var(--raya-bottom-control-gap);
+  padding: 0 clamp(20px, 8.205cqi, 32px) calc(var(--raya-bottom-control-gap) + 10px);
   background: #070709;
   color: var(--ink);
   font-family: var(--raya-font-family);

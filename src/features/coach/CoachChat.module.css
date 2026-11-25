@@ -21,7 +21,7 @@
   clip-path: inset(50%);
 }
 
-.log { block-size: clamp(212px, 70.25cqi, 274px); }
+.log { block-size: min(clamp(212px, 70.25cqi, 274px), max(0px, calc(var(--raya-app-height, 100dvh) - 145px - var(--raya-bottom-control-gap)))); }
 .logContents { display: flex; flex-direction: column; gap: 14px; }
 .logView {
   padding: 16px 10px 10px 16px;

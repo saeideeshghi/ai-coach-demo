@@ -28,10 +28,27 @@
 .gatewayLine {
   display: block;
   inline-size: 40px;
-  block-size: 2px;
+  block-size: 3px;
+  overflow: hidden;
   margin: 0 auto 20px;
   border-radius: 2px;
+  background: var(--raya-splash-track);
+}
+.gatewayLine::after {
+  content: '';
+  display: block;
+  inline-size: 35%;
+  block-size: 100%;
+  border-radius: inherit;
   background: var(--raya-program-action-fill);
+  animation: gateway-sweep 1.15s ease-in-out infinite alternate;
+}
+@keyframes gateway-sweep {
+  from { transform: translateX(0); }
+  to { transform: translateX(-185%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gatewayLine::after { animation: none; }
 }
 .verificationDots { display: flex; direction: ltr; justify-content: center; gap: 12px; margin-block-end: 20px; }
 .verificationDots i { inline-size: 6px; block-size: 6px; border-radius: 50%; background: #a69a93; }

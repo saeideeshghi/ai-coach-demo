@@ -5,7 +5,6 @@
   container-type: inline-size;
   block-size: 100%;
   box-sizing: border-box;
-  padding-block-end: var(--raya-bottom-safe-area);
   overflow: auto;
   overscroll-behavior: contain;
   background: #070709;

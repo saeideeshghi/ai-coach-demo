@@ -71,8 +71,7 @@ export async function verifyProgramMotion(browser, origin) {
   const progress = page.locator('[data-payment-progress]')
   await progress.waitFor()
   await page.locator('[data-checkout-review][inert]').waitFor()
-  assert.equal(await progress.evaluate(element => getComputedStyle(element).animationName), 'none',
-    'the gateway line is static in the reference')
+  assert.match(await progress.evaluate(element => getComputedStyle(element, '::after').animationName), /gateway-sweep/)
   assert.ok(await page.locator('[data-sheet=redirecting] [data-sheet-copy]').first().evaluate(element =>
     element.getAnimations().some(animation => animation.effect.getKeyframes()[0].opacity === '0')))
   const panels = await page.evaluate(() => {
@@ -117,7 +116,7 @@ export async function verifyProgramMotion(browser, origin) {
   await reduced.goto(origin + '/program/package')
   await reduced.getByRole('button', { name: 'ادامه و پرداخت', exact: true }).click()
   await reduced.getByRole('button', { name: 'پرداخت آزمایشی', exact: true }).click()
-  assert.equal(await reduced.locator('[data-payment-progress]').evaluate(element => getComputedStyle(element).animationName), 'none')
+  assert.equal(await reduced.locator('[data-payment-progress]').evaluate(element => getComputedStyle(element, '::after').animationName), 'none')
   await reduced.getByRole('heading', { name: 'پرداخت با موفقیت انجام شد' }).waitFor()
   await reduced.getByRole('button', { name: 'بازگشت به خانه', exact: true }).click()
   await reduced.waitForURL('**/home')

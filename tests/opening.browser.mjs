@@ -74,7 +74,7 @@ try {
         document.documentElement.style.setProperty('--raya-bottom-safe-area', value + 'px')
       }, safeArea)
       const { y, height } = await control.boundingBox()
-      assert.equal(Math.round(740 - y - height), 14 + safeArea, path)
+      assert.equal(Math.round(740 - y - height), (path === '/onboarding' ? 24 : 14) + safeArea, path)
       assert.equal(await bottomControls.evaluate(() => document.scrollingElement.scrollHeight), 740)
     }
   }

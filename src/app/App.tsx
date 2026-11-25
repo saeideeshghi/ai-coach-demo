@@ -334,7 +334,7 @@ export function App() {
           {route.page === 'profile' && (
             <ProfilePage step={route.step} picker={route.picker} query={route.query}
               onStep={(step) => navigate(profileAddress(step))}
-              onFinish={() => navigate(paths.home)}
+              onFinish={() => navigate(completed ? paths.home : paths.startSession, 'replace')}
               onBack={() => route.step === 1 ? openingProfileBack() : backTo(profileAddress(route.step - 1))}
               onOpenPicker={() => navigate(industryAddress())}
               onClosePicker={() => backTo(paths.profile)}

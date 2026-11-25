@@ -1,6 +1,6 @@
 import { ScrollArea } from '../../components/ScrollArea/ScrollArea'
 import { CompletionMark } from '../../components/CompletionMark'
-import { useRef, useState } from 'react'
+import { useEffect, useEffectEvent, useRef, useState } from 'react'
 import actionClock from '../../assets/program/home-action-clock.svg'
 import documentIcon from '../../assets/coach/summary-document.svg'
 import avatar from '../../assets/coach/summary-profile.png'
@@ -173,15 +173,33 @@ export function ProgramHome({ completed, preparing, active, starting, preparatio
         </ScrollArea>
         <ProgramNavigation current="home" onHome={() => homeContent.current?.scrollTo(0, 0)} onCoaching={onOpenCoach} onFollowup={onFollowup} onLearning={onLearning} onHistory={onHistory} />
       </section>
-      {starting && <ProgramSheet badge={startBadge} variant="start" onClose={onClose} title="شروع جلسهٔ اول با کوچ"
-        description="یک ساعت مشاورهٔ رایگان برای شناخت اهداف و چالش‌های شما؛ پس از این جلسه، روند اختصاصی رشد و یادگیری‌تان را با قدرت آغاز خواهیم کرد.">
-        {exit => <div className={styles.startActions}>
-          <button type="button" onClick={() => exit(onStart)}>شروع گفت‌وگو</button>
-          <button type="button" onClick={() => exit(onClose)}>بعداً ادامه می‌دهم</button>
-        </div>}
-      </ProgramSheet>}
+      {starting && <StartSessionSheet onStart={onStart} onClose={onClose} />}
       {preparationReadyAt !== undefined && <ProgramPreparationTransition readyAt={preparationReadyAt} onDone={onPreparationEnd} />}
     </>
   )
 }
 
+function StartSessionSheet({ onStart, onClose }: { onStart: () => void; onClose: () => void }) {
+  const [enteringSession, setEnteringSession] = useState(false)
+  const enterSession = useEffectEvent(onStart)
+  useEffect(() => {
+    if (!enteringSession) return
+    const timer = window.setTimeout(enterSession, 1500)
+    return () => window.clearTimeout(timer)
+  }, [enteringSession])
+
+  return (
+    <ProgramSheet badge={startBadge} variant="start" onClose={onClose} title="شروع جلسهٔ اول با کوچ"
+      description="یک ساعت مشاورهٔ رایگان برای شناخت اهداف و چالش‌های شما؛ پس از این جلسه، روند اختصاصی رشد و یادگیری‌تان را با قدرت آغاز خواهیم کرد.">
+      {exit => <div className={styles.startActions}>
+        <button type="button" disabled={enteringSession} aria-busy={enteringSession} onClick={() => setEnteringSession(true)}>
+          {enteringSession ? 'در حال ورود به جلسه…' : 'شروع گفت‌وگو'}
+        </button>
+        <button type="button" onClick={() => {
+          setEnteringSession(false)
+          exit(onClose)
+        }}>بعداً ادامه می‌دهم</button>
+      </div>}
+    </ProgramSheet>
+  )
+}
