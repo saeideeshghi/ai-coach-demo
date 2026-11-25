@@ -8,6 +8,8 @@
   --raya-reference-frame-border: #4a3b35;
   --raya-account-action-shadow: 0 7px 17px rgb(255 104 24 / 18%);
   --raya-top-control-gap: 14px;
+  --raya-bottom-control-gap: 14px;
+  --raya-bottom-safe-area: env(safe-area-inset-bottom, 0px);
   --raya-font-family: Kahroba, sans-serif;
   color-scheme: dark;
   background: #111;

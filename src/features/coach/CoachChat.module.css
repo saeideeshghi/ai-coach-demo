@@ -1,7 +1,7 @@
 .chat {
   position: absolute;
   z-index: 1;
-  inset: auto 16px 37.7px;
+  inset: auto 16px var(--raya-bottom-control-gap);
   display: grid;
   gap: 7.8px;
   min-inline-size: 0;

@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: calc(104 * var(--frame-unit)) 0 34px;
+  padding: calc(104 * var(--frame-unit)) 0 var(--raya-bottom-control-gap);
   background: #111110 url('../../assets/welcome/welcome-background.webp') center bottom / 100% auto no-repeat;
   color: #faf7f3;
   font-family: var(--raya-font-family);
@@ -56,7 +56,8 @@
   inline-size: min(308px, 79%);
   display: grid;
   gap: 14px;
-  margin-block-start: calc(52.5 * var(--frame-unit));
+  margin-block-start: auto;
+  padding-block-start: calc(52.5 * var(--frame-unit));
 }
 
 .actions button {

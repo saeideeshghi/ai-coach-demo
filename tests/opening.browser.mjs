@@ -40,6 +40,25 @@ try {
   }
   await shortMobile.close()
 
+  const bottomControls = await browser.newPage({ viewport: { width: 390, height: 740 }, reducedMotion: 'reduce' })
+  for (const [path, selector] of [
+    ['/onboarding', '[data-onboarding-next]'],
+    ['/home', 'nav[aria-label="نوار اصلی"]'],
+  ]) {
+    await bottomControls.goto(origin + path)
+    const control = bottomControls.locator(selector)
+    await control.waitFor()
+    for (const safeArea of [0, 34]) {
+      await bottomControls.evaluate((value) => {
+        document.documentElement.style.setProperty('--raya-bottom-safe-area', value + 'px')
+      }, safeArea)
+      const { y, height } = await control.boundingBox()
+      assert.equal(Math.round(740 - y - height), 14 + safeArea, path)
+      assert.equal(await bottomControls.evaluate(() => document.scrollingElement.scrollHeight), 740)
+    }
+  }
+  await bottomControls.close()
+
   for (const width of [320, 390]) {
     const page = await browser.newPage({ viewport: { width, height: 740 }, reducedMotion: 'reduce' })
     for (const [path, control] of [
@@ -146,8 +165,8 @@ try {
         assert.deepEqual(await button.boundingBox(), { x: 41, y, width: 308, height })
         assert.equal(await button.evaluate(el => getComputedStyle(el).fontSize), fontSize)
       }
-      await match('ورود به حساب', 476, 51, '14.8px')
-      await match('ثبت نام', 541, 49, '14.5px')
+      await match('ورود به حساب', height - 14 - 49 - 14 - 51, 51, '14.8px')
+      await match('ثبت نام', height - 14 - 49, 49, '14.5px')
     }
     await page.goBack()
     await verifyFrame(3)

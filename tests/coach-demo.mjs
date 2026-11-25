@@ -106,8 +106,8 @@ export async function verifyCoach(browser, origin) {
     const actionBox = await button('ثبت اصلاحیه').boundingBox()
     assert.ok(navBox.y >= actionBox.y + actionBox.height, 'the fixed bar leaves both summary actions clear')
     if (width === 390) {
-      assert.deepEqual([navBox.x, navBox.y, navBox.width, navBox.height].map(Math.round), [16, 745, 358, 67])
-      assert.deepEqual([actionBox.x, actionBox.y, actionBox.width, actionBox.height].map(Math.round), [16, 680, 157, 52])
+      assert.deepEqual([navBox.x, navBox.y, navBox.width, navBox.height].map(Math.round), [16, 763, 358, 67])
+      assert.deepEqual([actionBox.x, actionBox.y, actionBox.width, actionBox.height].map(Math.round), [16, 698, 157, 52])
       const lineHeights = await page.locator('[data-variant=summary]').evaluate(frame =>
         [...frame.querySelectorAll('h2 + p, h2 + ul li, h2 + strong + p')].map(element => getComputedStyle(element).lineHeight))
       assert.deepEqual(lineHeights, ['21px', '21px', '21px', '21px', '20px'])

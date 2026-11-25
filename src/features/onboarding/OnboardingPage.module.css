@@ -9,7 +9,7 @@
   flex-direction: column;
   box-sizing: border-box;
   min-block-size: 100%;
-  padding: 0 clamp(20px, 8.205cqi, 32px) 48px;
+  padding: 0 clamp(20px, 8.205cqi, 32px) var(--raya-bottom-control-gap);
   background: #070709;
   color: var(--ink);
   font-family: var(--raya-font-family);
@@ -50,7 +50,7 @@
 }
 
 .intro {
-  padding-block-start: min(calc(458 * var(--frame-unit)), 54dvh);
+  padding-block-start: min(calc(458 * var(--frame-unit)), calc((100dvh - var(--raya-bottom-safe-area) - env(safe-area-inset-top, 0px)) * 0.54));
 }
 
 .mark {
@@ -169,10 +169,6 @@
 }
 
 @container (max-width: 360px) {
-  .screen {
-    padding-block-end: 30px;
-  }
-
   .title {
     line-height: 39px;
   }

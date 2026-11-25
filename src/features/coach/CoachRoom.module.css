@@ -115,7 +115,7 @@
 
 .voice {
   position: absolute;
-  inset: auto 0 32px;
+  inset: auto 0 var(--raya-bottom-control-gap);
 }
 
 .prompt {
@@ -292,7 +292,6 @@
 }
 
 @container (max-width: 355px) {
-  .voice { inset-block-end: 29px; }
   .voiceButton { inline-size: 80px; block-size: 80px; }
 }
 

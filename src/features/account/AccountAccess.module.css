@@ -14,7 +14,7 @@
   min-block-size: 100%;
   display: flex;
   flex-direction: column;
-  padding: calc(142 * var(--frame-unit)) clamp(16px, 5.54cqi, 25px) 40px;
+  padding: calc(142 * var(--frame-unit)) clamp(16px, 5.54cqi, 25px) var(--raya-bottom-control-gap);
   background: #0e0f0f;
   color: var(--ink);
   font-family: var(--raya-font-family);
@@ -30,7 +30,7 @@
 
 .screen[data-mode='reset'] {
   --raya-field-font: 14px;
-  padding: calc(161 * var(--frame-unit)) clamp(18px, 7.18cqi, 30px) 40px;
+  padding: calc(161 * var(--frame-unit)) clamp(18px, 7.18cqi, 30px) var(--raya-bottom-control-gap);
 }
 
 .back {
@@ -396,7 +396,6 @@
 @container (max-width: 355px) {
   .screen {
     padding-block-start: 106px;
-    padding-block-end: 28px;
   }
 
   .screen[data-mode='recovery'] {

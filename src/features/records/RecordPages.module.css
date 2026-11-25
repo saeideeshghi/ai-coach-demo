@@ -38,7 +38,6 @@
 .page:is([data-view='report'], [data-view='account-edit']) .heading { padding-block-start: 44px; }
 .page:is([data-view='calendar'], [data-view='session']) .heading { padding-block-start: 38px; }
 .page[data-view='report'] .heading { padding-block-start: 53px; padding-block-end: 15px; }
-.page[data-view='report'] .footer { padding-block-end: 42px; }
 .page[data-view='calendar'] .heading { padding-block-start: 43px; padding-block-end: 16px; }
 .page[data-view='calendar'] .heading h1 { font-size: 22px; }
 .page[data-view='calendar'] .heading p { margin-block-start: 3px; }
@@ -60,7 +59,7 @@
 .back[data-end], .calendarButton { inset-inline: auto 8px; }
 .content { display: grid; gap: 10px; padding: 0 16px 13px; min-inline-size: 0; }
 .content [role='group'] > button { flex: 1 1 0; min-inline-size: 0; }
-.footer { display: grid; gap: 7px; padding: 6px 16px 28px; }
+.footer { display: grid; gap: 7px; padding: 6px 16px var(--raya-bottom-control-gap); }
 .footer > button { position: relative; }
 .footer > button > svg { position: absolute; inset-inline-end: 14px; }
 .downloadIcon { position: absolute; inset-inline-end: 14px; inset-block-start: calc(50% - 8px); }
@@ -113,11 +112,10 @@
   .heading { padding-block-start: 35px; }
   .page:is([data-view='report'], [data-view='account-edit']) .heading { padding-block-start: 45px; }
   .page:is([data-view='calendar'], [data-view='session']) .heading { padding-block-start: 43px; }
-  .page[data-view='report'] .footer { padding-block-end: 18px; }
   .page[data-view='notifications'] .heading { padding-block-start: 61px; }
   .heading h1 { font-size: 20px; line-height: 34px; }
   .heading[data-history] { min-block-size: 172px; }
   .heading[data-history] h1 { font-size: 18px; }
   .content { padding-inline: 12px; gap: 8px; }
-  .footer { padding-inline: 12px; padding-block-end: 17px; }
+  .footer { padding-inline: 12px; }
 }

@@ -1,14 +1,12 @@
 .frame {
-  --raya-program-nav-clearance: 32px;
+  --raya-program-nav-clearance: var(--raya-bottom-control-gap);
   position: relative;
   isolation: isolate;
   container-type: inline-size;
   block-size: 100%;
+  box-sizing: border-box;
+  padding-block-end: var(--raya-bottom-safe-area);
   overflow: auto;
   overscroll-behavior: contain;
   background: #070709;
-}
-
-@container (max-width: 355px) {
-  .frame > * { --raya-program-nav-clearance: 18px; }
 }
