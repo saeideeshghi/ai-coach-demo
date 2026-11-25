@@ -37,22 +37,8 @@
 .sheet[data-sheet='correction'] > p { margin-block-start: 8px; }
 .sheet[data-sheet='start'] > p { font-size: 13px; line-height: 20px; }
 
-.sheet[data-sheet='correction']::after,
-.sheet[data-sheet='saved']::after,
-.sheet[data-billing]::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 14px;
-  margin-inline: auto;
-  inline-size: 114px;
-  block-size: 4px;
-  border-radius: 2px;
-  background: #474545;
-}
 
-@media (display-mode: standalone) {
-  .sheet::after { display: none; }
-}
+
 
 @container (max-width: 355px) {
   .sheet { padding-block-end: 30px; }
@@ -120,16 +106,7 @@
 .sheet[data-sheet^='action-'] > p { max-inline-size: 246px; margin-block-start: 8px; }
 .sheet[data-sheet^='action-'] [data-sheet-copy] { animation: status-fade 170ms ease-out both; }
 .sheet[data-sheet^='action-'] > :last-child { align-self: center; margin-block-start: auto; }
-.sheet[data-sheet^='action-']::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 14px;
-  margin-inline: auto;
-  inline-size: 114px;
-  block-size: 4px;
-  border-radius: 2px;
-  background: #474545;
-}
+
 
 @container (max-width: 355px) {
   .sheet[data-sheet^='action-'] { min-block-size: min(360px, 100dvh); padding-block-end: 34px; }

@@ -10,7 +10,6 @@
   font-family: var(--raya-font-family);
 }
 
-.screen::after { content: ''; position: absolute; inset: auto 0 14px; margin-inline: auto; inline-size: 114px; block-size: 4px; background: #474545; border-radius: 2px; pointer-events: none; }
 .back { align-self: start; display: grid; place-items: center; inline-size: 32px; block-size: 27px; padding: 0; border: 0; color: inherit; background: transparent; cursor: pointer; }
 .back svg { inline-size: 16px; block-size: 16px; }
 .header { margin-inline: 8px; }
@@ -65,7 +64,6 @@
 .footer button:disabled { cursor: default; opacity: 1; }
 .footer button svg, .details svg { position: absolute; left: 15px; inset-block-start: calc(50% - 6px); }
 
-@media (display-mode: standalone) { .screen::after { display: none; } }
 
 @container (max-width: 355px) {
   .screen { padding-inline: 12px; }

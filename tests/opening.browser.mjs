@@ -80,6 +80,16 @@ try {
   }
   await bottomControls.close()
 
+  const frameless = await browser.newPage({ viewport: { width: 390, height: 740 }, reducedMotion: 'reduce' })
+  for (const path of ['/program/package', '/actions/compare-roles/chat']) {
+    await frameless.goto(origin + path)
+    const content = frameless.locator('[data-variant] > section').first()
+    await content.waitFor()
+    assert.equal(await content.evaluate(el => getComputedStyle(el, '::after').content), 'none',
+      'the phone home indicator must not cover page controls')
+  }
+  await frameless.close()
+
   for (const width of [320, 390]) {
     const page = await browser.newPage({ viewport: { width, height: 740 }, reducedMotion: 'reduce' })
     for (const [path, control] of [

@@ -183,7 +183,6 @@
 .composer .tool { display: grid; flex: none; place-items: center; padding: 0; inline-size: 24px; block-size: 34px; border: 0; background: transparent; opacity: .78; }
 .composer .tool:disabled { opacity: .48; }
 .composer button[type='submit'] { display: grid; flex: none; place-items: center; inline-size: 36px; block-size: 36px; padding: 0; border: 1px solid #ffab66; border-radius: 50%; background: var(--raya-program-action-fill); }
-.chatScreen::after { content: ''; position: absolute; inset: auto 0 14px; margin-inline: auto; inline-size: 114px; block-size: 4px; border-radius: 2px; background: #474545; pointer-events: none; }
 @keyframes message-enter {
   from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
@@ -212,8 +211,7 @@
 }
 
 @media (display-mode: standalone) {
-  .chatScreen::after { display: none; }
-}
+  }
 
 @media (prefers-reduced-motion: reduce) {
   .message, .typing, .notes p { animation: none; }
