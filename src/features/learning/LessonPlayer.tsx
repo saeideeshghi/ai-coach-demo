@@ -63,7 +63,10 @@ export function LessonPlayer({ sample, initial, onProgress, playing, onPlayingCh
         onPlayingChange(false)
         onProgress(event.currentTarget.duration, true)
       }}
-      onError={() => setError(true)} />
+      onError={() => setError(true)}>
+      {sample.captions && <track kind="captions" src={sample.captions} srcLang="fa" label="فارسی" default
+        onLoad={event => { event.currentTarget.track.mode = 'showing' }} />}
+    </video>
     {!playing && <button className={styles.playOverlay} type="button" aria-label="پخش ویدیو" onClick={toggle}>
       <span className={styles.playIcon} aria-hidden="true" />
     </button>}

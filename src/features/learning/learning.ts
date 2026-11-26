@@ -9,7 +9,7 @@ export type Course = {
   hero?: string
   minutes: number
   lessons: readonly Lesson[]
-  sample?: { source: string; poster: string }
+  sample?: { source: string; poster: string; captions?: string }
 }
 
 export type LessonProgress = { seconds: number; completed: boolean }

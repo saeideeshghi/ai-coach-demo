@@ -86,7 +86,7 @@
 .badge::before { content: ''; display: inline-block; vertical-align: middle; inline-size: 5px; block-size: 5px; margin-inline-end: 6px; border-radius: 50%; background: #ff641f; }
 .featureCopy h2 { font-size: 11.6px; line-height: 20px; }
 .featureCopy p, .cardCopy small { color: #b4aaa3; }
-.instructor { display: block; color: #ce8b59; font: italic 11px / 16px Georgia, serif; }
+.instructor { display: block; color: #ce8b59; font: 400 24px / 28px HerrVonMuellerhoff, cursive; }
 .metadata, .progressRow { display: flex; align-items: center; gap: 9px; color: #d3c8bf; font-size: 10px; }
 .metadata { justify-content: space-between; max-inline-size: min(100%, 256px); }
 .progressRow progress { flex: 1; direction: ltr; appearance: none; inline-size: 100%; block-size: 6px; border: 0; border-radius: 6px; overflow: hidden; background: #595657; }
@@ -149,7 +149,7 @@
 .player { position: absolute; inset: 0; display: grid; place-items: center; background: #131215; }
 .player:fullscreen { background: #000; }
 .player video { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; object-fit: cover; }
-.player:fullscreen video { object-fit: contain; }
+.player:fullscreen video { inset: 0; margin: auto; block-size: auto; max-block-size: 100%; object-fit: contain; }
 .playOverlay {
   position: relative;
   display: grid;
@@ -249,3 +249,5 @@
   .courseCard img { block-size: 21.54cqi; }
   .cardCopy { font-size: 3.33cqi; line-height: 4.87cqi; }
 }
+
+.player video::cue { color: #fff; background: transparent; font-family: Kahroba, sans-serif; font-size: clamp(14px, 2.4vw, 22px); font-weight: 500; text-shadow: 0 1px 3px #000, 1px 0 2px #000, -1px 0 2px #000; }

@@ -6,6 +6,7 @@ import finance from '../assets/learning/finance.webp'
 import systems from '../assets/learning/systems.webp'
 import poster from '../assets/learning/lesson-poster.webp'
 import sample from '../assets/learning/lesson-demo.mp4'
+import captions from '../assets/learning/lesson-fa.vtt?url'
 import type { Course, LearningProgress } from '../features/learning/learning'
 
 export const demoCourses: readonly Course[] = [
@@ -17,7 +18,7 @@ export const demoCourses: readonly Course[] = [
     image: management,
     hero,
     minutes: 45,
-    sample: { source: sample, poster },
+    sample: { source: sample, poster, captions },
     lessons: [
       { id: 'performance-standards', title: 'شناسایی و تعیین استانداردهای عملکرد' },
       { id: 'organizational-structure', title: 'راهبرد ساختار سازمانی' },

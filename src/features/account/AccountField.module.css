@@ -19,7 +19,13 @@
   min-block-size: var(--raya-field-height, 41px);
   border: 1px solid var(--raya-account-border);
   border-radius: 15.6px;
+  overflow: clip;
   background: var(--raya-account-fill);
+}
+
+.control:has(input:is(:autofill, :-webkit-autofill)) {
+  --raya-autofill-fill: #201c19;
+  background: var(--raya-autofill-fill);
 }
 
 .control:focus-within {
